@@ -10,7 +10,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 
 		<!-- JPA entities must be registered here -->
-		<class>hr.iii.data.dataobjects.Klijent</class>
+		<class>hr.veleri.data.dataobjects.Klijent</class>
 
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
@@ -32,7 +32,7 @@
 <!--hibernate.c3p0.min_size=2-->
 <!--hibernate.c3p0.timeout=5000-->
 <!--hibernate.c3p0.max_statements=100-->
-<!--hibernate.connection.url=jdbc\:oracle\:thin\:@iii-razvoj\:1521\:ORCL-->
+<!--hibernate.connection.url=jdbc\:oracle\:thin\:@veleri-razvoj\:1521\:ORCL-->
 <!--hibernate.connection.username=iivanovic-->
 <!--hibernate.connection.password=iivanovic-->
 
