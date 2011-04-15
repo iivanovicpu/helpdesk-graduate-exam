@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd"
        default-autowire="byName">
 
-    <bean id="entityManagerFactory" class="hr.iii.HelpdeskEntityManagerFactoryBean">
+    <bean id="entityManagerFactory" class="hr.veleri.HelpdeskEntityManagerFactoryBean">
         <constructor-arg>
             <map>
                 <entry key="hibernate.connection.url" value="vJ5cbxcNMxtArkDN8Bsa11NW1xarTgvZIjX+Jugldf+sMFgCLG6n4FSx7OsDfkDu+zm7gNBkur0="/>
@@ -26,11 +26,11 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="klijentiDao" class="hr.iii.data.dao.jpa.KlijentiImp">
+    <bean id="klijentiDao" class="hr.veleri.data.dao.jpa.KlijentiImp">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="appConfiguration" class="hr.iii.data.AppConfiguration">
+    <bean id="appConfiguration" class="hr.veleri.data.AppConfiguration">
         <property name="properties" ref="config"/>
     </bean>
 
@@ -38,7 +38,7 @@
         <property name="location" value="classpath:config.properties"/>
     </bean>
 
-    <bean id="initData" class="hr.iii.data.InitData">
+    <bean id="initData" class="hr.veleri.data.InitData">
         <property name="klijentiDao" ref="klijentiDao"/>
     </bean>
 
