@@ -1,0 +1,26 @@
+NERIJEŠENO:
+- parser za request xml-ove i response xml-ove (za socket komunikaciju)
+- primjer tree tablice (za klijente, podređene klijente, licence, aplikacije)
+- layout: omogućiti da se content dio sastavi od više stranica (možda da svaki fragment bude panel ?)
+- primjer ajax tablice s podacima sa sortiranjem, filtriranjem, paginacijom ...
+- dizajn sučelja (css)
+- lokalizacija podataka u tablici
+- primjer ajax forme za unos i izmjenu:
+    - panel s porukama validacije
+- primjer filtriranja tablice (plus paginacija i sortiranje)
+- izvještaji
+- kreirati abstraktne klase za najčešće slučajeve (tablične preglede i forme)
+
+- završiti model podataka na shemi iivanovic/iivanovic (paralelno raditi prebacivanje podataka u novi model)
+
+
+
+---------------------------
+RIJEŠENO:
+- primjer socket klijenta za irs-proxy
+- primjer web servisa: http://localhost:8080/userInfo/id/1
+- primjer tablice s prikazom podataka iz vezanih tablica (fk)
+- omogućena enkripcija properties-a (persistence.xml), enkriptirati vrijednosti u propertiesMap i upisati u constructor-args OdrzEntityManagerFactoryBean klase
+- primjer autentifikacije (login koji radi: admin <trojanci>)
+- primjer osnovnog layout-a s navigacijom (osnovni dijelovi svake stranice: content, header, userinfo)
+

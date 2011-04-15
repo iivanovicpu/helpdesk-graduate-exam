@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+      http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<!-- A JPA Persistence Unit -->
+	<persistence-unit name="helpdeskJpaUnit" transaction-type="RESOURCE_LOCAL">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<!-- JPA entities must be registered here -->
+		<class>hr.iii.data.dataobjects.Klijent</class>
+
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+            <property name="hibernate.connection.autocommit" value="false"/>
+
+            <!--ako je value "create" entiteti se svaki put iznova kreiraju-->
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+
+			<property name="hibernate.connection.driver_class" value="org.postgresql.Driver"></property>
+            <!--<property name="hibernate.connection.validationQuery" value="select 1 from dual"/>-->
+            <property name="hibernate.show_sql" value="true" />
+
+<!--hibernate.query.substitutions=true 'Y', false 'N', yes 'Y', no 'N'-->
+<!--hibernate.show_sql=false-->
+<!--hibernate.use_outer_join=true-->
+<!--hibernate.transaction.factory_class=org.hibernate.transaction.JDBCTransactionFactory-->
+<!--hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider-->
+<!--hibernate.c3p0.max_size=10-->
+<!--hibernate.c3p0.min_size=2-->
+<!--hibernate.c3p0.timeout=5000-->
+<!--hibernate.c3p0.max_statements=100-->
+<!--hibernate.connection.url=jdbc\:oracle\:thin\:@iii-razvoj\:1521\:ORCL-->
+<!--hibernate.connection.username=iivanovic-->
+<!--hibernate.connection.password=iivanovic-->
+
+
+
+
+		</properties>
+
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"
+      xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8"/>
+    <title>LegUp: Wicket Spring JPA 2.0</title>
+</head>
+<body>
+<span wicket:id="navigation"/>
+<wicket:fragment wicket:id="userinfo">UserInfo</wicket:fragment>
+<wicket:fragment wicket:id="header">Popis radnika</wicket:fragment>
+<wicket:fragment wicket:id="content">
+    <ul wicket:id="listRadContainer">
+        <li wicket:id="listrad"><span wicket:id="radnikId"/> @ <span wicket:id="radnikIme"/>
+        </li>
+    </ul>
+</wicket:fragment>
+</body>
+</html>
