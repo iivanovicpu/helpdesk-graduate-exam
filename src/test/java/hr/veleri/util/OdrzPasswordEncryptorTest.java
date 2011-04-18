@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  */
 public class OdrzPasswordEncryptorTest extends TestCase {
     public void testDecrypt() throws Exception {
-        OdrzConfigurationDecryptor encryptor = new OdrzConfigurationDecryptor();
+        ConfigurationDecryptor encryptor = new ConfigurationDecryptor();
         assertEquals(encryptor.decrypt("Dq7LbPmo2aen8RDRB9AxlPBVo3NAHzgq"),"iivanovic");
     }
 }

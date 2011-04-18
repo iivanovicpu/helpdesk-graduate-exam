@@ -47,6 +47,14 @@ public class Klijent extends DomainObject {
         this.sifra = sifra;
     }
 
+    public String getNaziv() {
+        return naziv;
+    }
+
+    public void setNaziv(String naziv) {
+        this.naziv = naziv;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

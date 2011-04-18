@@ -1,6 +1,6 @@
 package hr.veleri.pages;
 
-import hr.veleri.data.dao.interfaces.KorisnikDao;
+import hr.veleri.data.dao.interfaces.KorisniciDao;
 import hr.veleri.data.dataobjects.Korisnik;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -20,7 +20,7 @@ import java.util.List;
 public class RadnikPage extends AuthenticatedPage {
 
     @SpringBean
-    private KorisnikDao radnikDao;
+    private KorisniciDao radnikDao;
 
 
     public RadnikPage(final PageParameters pp) {

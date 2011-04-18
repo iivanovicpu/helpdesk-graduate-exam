@@ -30,6 +30,10 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <bean id="korisniciDao" class="hr.veleri.data.dao.jpa.KorisniciImp">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
     <bean id="appConfiguration" class="hr.veleri.data.AppConfiguration">
         <property name="properties" ref="config"/>
     </bean>
@@ -38,8 +42,6 @@
         <property name="location" value="classpath:config.properties"/>
     </bean>
 
-    <bean id="initData" class="hr.veleri.data.InitData">
-        <property name="klijentiDao" ref="klijentiDao"/>
-    </bean>
+    <bean id="initData" class="hr.veleri.data.InitData"/>
 
 </beans>

@@ -1,6 +1,6 @@
 package hr.veleri;
 
-import hr.veleri.util.OdrzConfigurationDecryptor;
+import hr.veleri.util.ConfigurationDecryptor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
@@ -15,10 +15,14 @@ import java.util.Map;
  * User: iivanovic
  * Date: 11.10.2010.
  * Time: 12:27:18
+ * <br>Opis: Specifičan EntityManagerFactoryBean koji postavke za pristup bazi dekriptira prije same konekcije na bazu.
+ * Da bi mogli u applicationContext xml-u pohraniti kriptirane podatke za pristup bazi (iz sigurnosnih razloga)
+ * entity managment ih prije korištenja treba dekodirati, stoga je naslijeđena klasa LocalManagerFactoryBean i
+ * modificiran način čitanja podataka za pristup
  */
 public class HelpdeskEntityManagerFactoryBean extends LocalEntityManagerFactoryBean {
     protected final Log logger = LogFactory.getLog(getClass());
-    private OdrzConfigurationDecryptor decryptor = new OdrzConfigurationDecryptor();
+    private ConfigurationDecryptor decryptor = new ConfigurationDecryptor();
 
 
     public HelpdeskEntityManagerFactoryBean(Map<String, Object> propertiesMap) {
