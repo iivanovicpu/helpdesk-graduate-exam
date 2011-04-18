@@ -3,8 +3,8 @@ package hr.veleri.data.dao.interfaces;
 import hr.veleri.data.dataobjects.Korisnik;
 import org.springframework.transaction.annotation.Transactional;
 
-public interface KorisniciDao extends Dao<Korisnik> {
+public interface KorisnikDao extends Dao<Korisnik> {
 
     @Transactional
-    Korisnik getRadnik(String username, String password);
+    Korisnik getKorisnik(String username, String password);
 }

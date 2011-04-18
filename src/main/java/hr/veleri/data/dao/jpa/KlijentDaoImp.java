@@ -1,6 +1,6 @@
 package hr.veleri.data.dao.jpa;
 
-import hr.veleri.data.dao.interfaces.KlijentiDao;
+import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.springframework.orm.jpa.JpaCallback;
@@ -13,9 +13,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-public class KlijentiImp extends AbstractDaoJPAImpl<Klijent> implements KlijentiDao {
+public class KlijentDaoImp extends AbstractDaoJPAImpl<Klijent> implements KlijentDao {
 
-    public KlijentiImp() {
+    public KlijentDaoImp() {
         super(Klijent.class);
     }
 
