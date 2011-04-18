@@ -20,13 +20,13 @@ import java.util.List;
 public class RadnikPage extends AuthenticatedPage {
 
     @SpringBean
-    private KorisnikDao radnikDao;
+    private KorisnikDao korisnikDao;
 
 
     public RadnikPage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listRadContainer");
 
-        wmc.add(new ListView<Korisnik>("listrad", new PropertyModel<List<Korisnik>>(this, "radnikDao.findAll")) {
+        wmc.add(new ListView<Korisnik>("listrad", new PropertyModel<List<Korisnik>>(this, "korisnikDao.findAll")) {
 
             private static final long serialVersionUID = 1L;
 
