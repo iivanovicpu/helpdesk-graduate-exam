@@ -38,7 +38,7 @@ public class Login extends WebPage {
             protected void onSubmit() {
                 try {
                     // todo: dohvat korisnika iz servisa
-                    Korisnik korisnik = new Korisnik();//radnikDao.getRadnik(username, password);
+                    Korisnik korisnik = new Korisnik("bla","bla","bla","bla");//radnikDao.getRadnik(username, password);
                     ((HelpdeskSession) getSession()).setLoggedInUser(korisnik);
                     if (!continueToOriginalDestination())
                         setResponsePage(HomePage.class);

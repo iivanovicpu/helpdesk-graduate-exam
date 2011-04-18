@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Time: 13:24:58
  */
 @Entity
-@Table(name = "KLIJENT")
+@Table(name = "KORISNIK_KLIJENT")
 public class KorisnikKlijent extends DomainObject {
 
     @Id

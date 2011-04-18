@@ -33,6 +33,16 @@ public class Korisnik extends DomainObject {
     @Column(name = "LOZINKA")
     private String lozinka;
 
+    public Korisnik() {
+    }
+
+    public Korisnik(String ime, String prezime, String email, String lozinka) {
+        this.ime = ime;
+        this.lozinka = lozinka;
+        this.prezime = prezime;
+        this.email = email;
+    }
+
     public long getRadid() {
         return id;
     }

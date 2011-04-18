@@ -1,7 +1,7 @@
 package hr.veleri.data.dao.jpa;
 
 import hr.veleri.AuthenticationException;
-import hr.veleri.data.dao.interfaces.KorisnikDao;
+import hr.veleri.data.dao.interfaces.KorisniciDao;
 import hr.veleri.data.dataobjects.Korisnik;
 import org.springframework.orm.jpa.JpaCallback;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,9 +11,9 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class KorisnikDaoJPAImp extends AbstractDaoJPAImpl<Korisnik> implements KorisnikDao {
+public class KorisniciImp extends AbstractDaoJPAImpl<Korisnik> implements KorisniciDao {
 
-    public KorisnikDaoJPAImp() {
+    public KorisniciImp() {
         super(Korisnik.class);
     }
 

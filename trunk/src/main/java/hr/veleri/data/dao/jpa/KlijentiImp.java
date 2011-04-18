@@ -54,19 +54,16 @@ public class KlijentiImp extends AbstractDaoJPAImpl<Klijent> implements Klijenti
                     }
                 });
             }
-//            if (sortParam.getProperty().equals("mjesto.naziv")) {
-//                Collections.sort(sortedEntries, new Comparator() {
-//                    public int compare(Object arg0, Object arg1) {
-//                        Klijent klijent1 = (Klijent) arg0;
-//                        Klijent klijent2 = (Klijent) arg1;
-//                        String mjesto1 = klijent1.getMjesto() != null ? klijent1.getMjesto().getNaziv() : "";
-//                        String mjesto2 = klijent2.getMjesto() != null ? klijent2.getMjesto().getNaziv() : "";
-//
-//                        int result = mjesto1.compareTo(mjesto2);
-//                        return sortParam.isAscending() ? result : -result;
-//                    }
-//                });
-//            }
+            if (sortParam.getProperty().equals("naziv")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Klijent klijent1 = (Klijent) arg0;
+                        Klijent klijent2 = (Klijent) arg1;
+                        int result = klijent1.getNaziv().compareTo(klijent2.getNaziv());
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
         }
         return sortedEntries.subList(first, first + count);
     }

@@ -9,12 +9,12 @@ import java.util.Map;
  * Date: 07.10.2010.
  * Time: 14:30:59
  */
-public class OdrzConfigurationDecryptor {
+public class ConfigurationDecryptor {
     private static final String ENC_PASSWORD = "supertajnikljuc";
 
     private static TextEncryptor encryptor = new TextEncryptor();
 
-    public OdrzConfigurationDecryptor() {
+    public ConfigurationDecryptor() {
         encryptor.setPassword(ENC_PASSWORD);
     }
 
@@ -31,12 +31,12 @@ public class OdrzConfigurationDecryptor {
 
     public static void main(String[] args) {
         /* posgres:
-        *   connection: jdbc:postgresql://localhost:5432/radninalog
+        *   connection: jdbc:postgresql://localhost:5432/helpdesk
         *   username:   radninalog
         *   password:   radninalog
         * */
 
-//        OdrzConfigurationDecryptor decryptor = new OdrzConfigurationDecryptor();
+//        ConfigurationDecryptor decryptor = new ConfigurationDecryptor();
         encryptor.setPassword(ENC_PASSWORD);
         System.out.println("radninalog: " + encryptor.encrypt("radninalog"));
         System.out.println("jdbc:postgresql://localhost:5432/helpdesk: " + encryptor.encrypt("jdbc:postgresql://localhost:5432/helpdesk"));
