@@ -26,11 +26,11 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="klijentiDao" class="hr.veleri.data.dao.jpa.KlijentiImp">
+    <bean id="klijentDao" class="hr.veleri.data.dao.jpa.KlijentDaoImp">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="korisniciDao" class="hr.veleri.data.dao.jpa.KorisniciImp">
+    <bean id="korisnikDao" class="hr.veleri.data.dao.jpa.KorisnikDaoImp">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 

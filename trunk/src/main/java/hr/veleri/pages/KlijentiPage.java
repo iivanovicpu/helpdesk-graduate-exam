@@ -1,6 +1,6 @@
 package hr.veleri.pages;
 
-import hr.veleri.data.dao.interfaces.KlijentiDao;
+import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
@@ -22,7 +22,7 @@ import java.util.Iterator;
  */
 public class KlijentiPage extends AuthenticatedPage {
     @SpringBean
-    private KlijentiDao klijentiDao;
+    private KlijentDao klijentDao;
 
     public KlijentiPage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listKlijentContainer");
@@ -33,7 +33,7 @@ public class KlijentiPage extends AuthenticatedPage {
         };
         SortableDataProvider provider = new SortableDataProvider() {
             public int size() {
-                return klijentiDao.countAll();
+                return klijentDao.countAll();
             }
 
             public IModel model(Object object) {
@@ -43,7 +43,7 @@ public class KlijentiPage extends AuthenticatedPage {
 
             public Iterator iterator(int first, int count) {
                 SortParam sortParam = getSort();
-                return klijentiDao.selectEntries(first, count, sortParam).iterator();
+                return klijentDao.selectEntries(first, count, sortParam).iterator();
             }
         };
 //        DefaultDataTable dataTable = new DefaultDataTable("entries", columns, provider.get(), 3);
