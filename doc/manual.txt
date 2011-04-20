@@ -1,0 +1,23 @@
+Opis sustava:
+Helpdesk sustav,
+- višekorisnički rad kroz mehanizam prijave u sustav korisničkim imenom i lozinkom
+    - kao korisničko ime koristi se email
+- tri kategorije korisnika: administrator sustava, zaposlenik, korisnik klijenta
+    - administrator: korisnik koji nije niti u kategoriji zaposlenika niti klijenta (ne nalazi se u vezanoj tablici)
+    - zaposlenik: korisnik vezan za aplikaciju za čije je održavanje zadužen (tablica korisnik_zaposlenik)
+    - korisnik klijenta: korisnik vezan za klijenta kojeg predstavlja (tablica korisnik_klijent)
+- ovisno o kategoriji korisnika nakon lgoin-a aplikacija daje različite mogućnosti:
+    - administrator - pregled i ažuriranje svih prijava, intervencija te matičnih podataka
+    - zaposlenik - pregled prijava vezanih za aplikacije koje održava, unos intervencija za te prijave, promjena osobnih podataka
+    - klijent - pregled prijava koje je sam unio te pripadajućih intervencija
+
+Upute:
+- logiranje: backdoor ulaz za administratora, inicijalno korisnik:
+    admin <the MD5 encoder>
+    nije spremljen u bazu već je hardkodiran u KorisnikDaoImp servisu
+- development mode: ako je ukljucena postavka: developmentMode mora u persistence.xml datoteci postojati linija:
+    <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+    - ovo kod svakog startanja aplikacije briše sadržaj baze te ponovno kreira prazne tablice
+    - ukljucena opcija developmentMode nakon startanja inicijalizira bazu s testnim odacima
+    - u developmentModu odmah nakon startanja moguće je ući samo s hardkodiranim "admin" userom
