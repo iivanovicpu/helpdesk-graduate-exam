@@ -1,5 +1,7 @@
 package hr.veleri.pages;
 
+import hr.veleri.WicketApplication;
+import hr.veleri.data.dataobjects.Korisnik;
 import org.apache.wicket.PageParameters;
 
 /**
@@ -15,7 +17,7 @@ public class UserInfo extends WebServicePage {
             id = 1;
         }
 
-//        User user = ((WicketApplication) getApplication()).getUser(id);
-//        setDefaultModel(new Model(user));
+//        Korisnik korisnik = ((WicketApplication) getApplication()).getSessionStore().ge(id);
+//        setDefaultModel(new Model(korisnik));
     }
 }

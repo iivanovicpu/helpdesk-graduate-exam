@@ -6,5 +6,5 @@ import org.springframework.transaction.annotation.Transactional;
 public interface KorisnikDao extends Dao<Korisnik> {
 
     @Transactional
-    Korisnik getKorisnik(String username, String password);
+    public Korisnik getKorisnik(String username, String password);
 }
