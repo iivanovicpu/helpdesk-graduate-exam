@@ -38,10 +38,10 @@ public class InitData {
     }
 
     private void initKorisnici() {
-        korisnikDao.save(new Korisnik("Igor","Ivanović","igor.ivanovic@veleri.hr",""));
-        korisnikDao.save(new Korisnik("Patrik","Pauro","patrik.pauro@veleri.hr",""));
-        korisnikDao.save(new Korisnik("Tomislav","Ćosić","tomislav.cosic@veleri.hr",""));
-        korisnikDao.save(new Korisnik("Vanja","Juhas","vanja.juhas@veleri.hr",""));
+        korisnikDao.save(new Korisnik("Igor","Ivanović","igor.ivanovic@veleri.hr","3b6d69c25e32c90b85c11c03dfde97e6")); // pass: iivanovic
+        korisnikDao.save(new Korisnik("Patrik","Pauro","patrik.pauro@veleri.hr","6c722ef06c1db589caef37c1b5fb8850")); // pass: ppauro
+        korisnikDao.save(new Korisnik("Tomislav","Ćosić","tomislav.cosic@veleri.hr","cb3918a280403e87479d2ec7141b32dc")); // pass: tcosic
+        korisnikDao.save(new Korisnik("Vanja","Juhas","vanja.juhas@veleri.hr","9829bcb9e22402246d5f865c74117a16"));// pass: vjuhas
     }
 
     private void initKlijenti() {

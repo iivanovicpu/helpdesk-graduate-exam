@@ -4,6 +4,7 @@ import hr.veleri.AuthenticationException;
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.AppConfiguration;
 import hr.veleri.data.InitData;
+import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -27,7 +28,7 @@ public class Login extends WebPage {
     private AppConfiguration appConfiguration;
 
     @SpringBean
-    private InitData initData;
+    private KorisnikDao korisnikDao;
 
     public Login() {
         initApplication();
@@ -38,7 +39,7 @@ public class Login extends WebPage {
             protected void onSubmit() {
                 try {
                     // todo: dohvat korisnika iz servisa
-                    Korisnik korisnik = new Korisnik("bla","bla","bla","bla");//radnikDao.getKorisnik(username, password);
+                    Korisnik korisnik = korisnikDao.getKorisnik(username, password);
                     ((HelpdeskSession) getSession()).setLoggedInUser(korisnik);
                     if (!continueToOriginalDestination())
                         setResponsePage(HomePage.class);
