@@ -43,12 +43,12 @@ public class Korisnik extends DomainObject {
         this.email = email;
     }
 
-    public long getRadid() {
+    public long getId() {
         return id;
     }
 
-    public void setRadid(long radid) {
-        this.id = radid;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getIme() {
