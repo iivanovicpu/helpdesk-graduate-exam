@@ -8,7 +8,8 @@
     <bean id="entityManagerFactory" class="hr.veleri.HelpdeskEntityManagerFactoryBean">
         <constructor-arg>
             <map>
-                <entry key="hibernate.connection.url" value="vJ5cbxcNMxtArkDN8Bsa11NW1xarTgvZIjX+Jugldf+sMFgCLG6n4FSx7OsDfkDu+zm7gNBkur0="/>
+                <entry key="hibernate.connection.url"
+                       value="vJ5cbxcNMxtArkDN8Bsa11NW1xarTgvZIjX+Jugldf+sMFgCLG6n4FSx7OsDfkDu+zm7gNBkur0="/>
                 <entry key="hibernate.connection.user" value="zJEoXb+5KEE9ZXrHNwsHh6XHUIEBgGz2"/>
                 <entry key="hibernate.connection.password" value="2ZshoUtU2wNYkL9DLKscBTwYaOSDlS/m"/>
             </map>
@@ -31,6 +32,18 @@
     </bean>
 
     <bean id="korisnikDao" class="hr.veleri.data.dao.jpa.KorisnikDaoImp">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="korisnikKlijentDao" class="hr.veleri.data.dao.jpa.KorisnikKlijentDaoImpl">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="korisnikZaposlenikDao" class="hr.veleri.data.dao.jpa.KorisnikZaposlenikDaoImpl">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="aplikacijaDao" class="hr.veleri.data.dao.jpa.AplikacijaDaoImpl">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 

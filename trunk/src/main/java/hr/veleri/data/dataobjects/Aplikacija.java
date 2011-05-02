@@ -22,6 +22,14 @@ public class Aplikacija extends DomainObject {
     @Column(name = "NAZIV")
     private String naziv;
 
+    public Aplikacija() {
+    }
+
+    public Aplikacija(String naziv, String sifra) {
+        this.naziv = naziv;
+        this.sifra = sifra;
+    }
+
     public int getId() {
         return id;
     }

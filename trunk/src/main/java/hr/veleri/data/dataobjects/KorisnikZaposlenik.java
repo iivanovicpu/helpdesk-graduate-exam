@@ -8,8 +8,8 @@ import javax.persistence.*;
  * Time: 13:24:58
  */
 @Entity
-@Table(name = "KORISNIK_KLIJENT")
-public class KorisnikKlijent extends DomainObject {
+@Table(name = "KORISNIK_ZAPOSLENIK")
+public class KorisnikZaposlenik extends DomainObject {
 
     @Id
     @GeneratedValue
@@ -17,18 +17,18 @@ public class KorisnikKlijent extends DomainObject {
     private int id;
 
     @ManyToOne(targetEntity = Klijent.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "KLIJENT_ID")
-    private Klijent klijent;
+    @JoinColumn(name = "APLIKACIJA_ID")
+    private Aplikacija aplikacija;
 
     @ManyToOne(targetEntity = Korisnik.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "KORISNIK_ID")
     private Korisnik korisnik;
 
-    public KorisnikKlijent() {
+    public KorisnikZaposlenik() {
     }
 
-    public KorisnikKlijent(Klijent klijent, Korisnik korisnik) {
-        this.klijent = klijent;
+    public KorisnikZaposlenik(Aplikacija aplikacija, Korisnik korisnik) {
+        this.aplikacija = aplikacija;
         this.korisnik = korisnik;
     }
 
@@ -40,12 +40,12 @@ public class KorisnikKlijent extends DomainObject {
         this.id = id;
     }
 
-    public Klijent getKlijent() {
-        return klijent;
+    public Aplikacija getAplikacija() {
+        return aplikacija;
     }
 
-    public void setKlijent(Klijent klijent) {
-        this.klijent = klijent;
+    public void setAplikacija(Aplikacija aplikacija) {
+        this.aplikacija = aplikacija;
     }
 
     public Korisnik getKorisnik() {
@@ -61,9 +61,9 @@ public class KorisnikKlijent extends DomainObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        KorisnikKlijent that = (KorisnikKlijent) o;
+        KorisnikZaposlenik that = (KorisnikZaposlenik) o;
 
-        if (!klijent.equals(that.klijent)) return false;
+        if (!aplikacija.equals(that.aplikacija)) return false;
         if (!korisnik.equals(that.korisnik)) return false;
 
         return true;
@@ -71,7 +71,7 @@ public class KorisnikKlijent extends DomainObject {
 
     @Override
     public int hashCode() {
-        int result = klijent.hashCode();
+        int result = aplikacija.hashCode();
         result = 31 * result + korisnik.hashCode();
         return result;
     }
