@@ -1,18 +1,6 @@
 NERIJEŠENO:
-- parser za request xml-ove i response xml-ove (za socket komunikaciju)
-- primjer tree tablice (za klijente, podređene klijente, licence, aplikacije)
-- layout: omogućiti da se content dio sastavi od više stranica (možda da svaki fragment bude panel ?)
-- primjer ajax tablice s podacima sa sortiranjem, filtriranjem, paginacijom ...
-- dizajn sučelja (css)
-- lokalizacija podataka u tablici
-- primjer ajax forme za unos i izmjenu:
-    - panel s porukama validacije
-- primjer filtriranja tablice (plus paginacija i sortiranje)
-- izvještaji
-- kreirati abstraktne klase za najčešće slučajeve (tablične preglede i forme)
-
-- završiti model podataka na shemi iivanovic/iivanovic (paralelno raditi prebacivanje podataka u novi model)
-
+- nakon logina 3 različita sučelja (ovisno o tipu korisnika)
+- pregledi s sortiranjem, paginacijom, dodaj - izmjeni - izbriši, (filtiriranje ??)
 
 
 ---------------------------

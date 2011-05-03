@@ -1,10 +1,7 @@
 package hr.veleri.data;
 
 import hr.veleri.data.dao.interfaces.*;
-import hr.veleri.data.dataobjects.Aplikacija;
-import hr.veleri.data.dataobjects.Klijent;
-import hr.veleri.data.dataobjects.Korisnik;
-import hr.veleri.data.dataobjects.KorisnikZaposlenik;
+import hr.veleri.data.dataobjects.*;
 
 /**
  * User: iivanovic
@@ -47,8 +44,7 @@ public class InitData {
 
     public void init() {
         if (!isInitialised()) {
-            initKlijenti();
-            initKorisniciKlijentiZaposlenici();
+            initExampleData();
             setInitialised(true);
         } else {
             System.out.println("--- db already initialised !!! ---");
@@ -56,48 +52,31 @@ public class InitData {
 
     }
 
-    private void initKorisniciKlijentiZaposlenici() {
+    private void initExampleData() {
         // klijenti
-        Klijent pl = new Klijent("001", "Plava Laguna d.d.");
-        Klijent riviera = new Klijent("002", "Riviera Poreč d.d.");
-        Klijent imperial = new Klijent("003", "Imperial Rab d.d.");
-        Klijent rabac = new Klijent("004", "Rabac d.d.");
-        Klijent ss = new Klijent("005", "Sunčana staza d.o.o.");
-        Klijent makarska = new Klijent("006", "Hoteli Makarska d.d.");
-        Klijent supetrus = new Klijent("007", "Supetrus Hoteli d.d.");
-        klijentDao.save(pl);
-        klijentDao.save(riviera);
-        klijentDao.save(imperial);
-        klijentDao.save(rabac);
-        klijentDao.save(ss);
-        klijentDao.save(makarska);
-        klijentDao.save(supetrus);
+        Klijent pl = klijentDao.save(new Klijent("001", "Plava Laguna d.d."));
+        Klijent riviera = klijentDao.save(new Klijent("002", "Riviera Poreč d.d."));
+        Klijent imperial = klijentDao.save(new Klijent("003", "Imperial Rab d.d."));
+        Klijent rabac = klijentDao.save(new Klijent("004", "Rabac d.d."));
+        Klijent ss = klijentDao.save(new Klijent("005", "Sunčana staza d.o.o."));
+        Klijent makarska = klijentDao.save(new Klijent("006", "Hoteli Makarska d.d."));
+        Klijent supetrus = klijentDao.save(new Klijent("007", "Supetrus Hoteli d.d."));
 
         // korisnici
-        Korisnik iivanovic = new Korisnik("Igor", "Ivanović", "igor.ivanovic@veleri.hr", "3b6d69c25e32c90b85c11c03dfde97e6");
-        Korisnik ppauro = new Korisnik("Patrik", "Pauro", "patrik.pauro@veleri.hr", "6c722ef06c1db589caef37c1b5fb8850");
-        Korisnik tcosic = new Korisnik("Tomislav", "Ćosić", "tomislav.cosic@veleri.hr", "cb3918a280403e87479d2ec7141b32dc");
-        Korisnik vjuhas = new Korisnik("Vanja", "Juhas", "vanja.juhas@veleri.hr", "9829bcb9e22402246d5f865c74117a16");
-        korisnikDao.save(iivanovic);    // pass: iivanovic
-        korisnikDao.save(ppauro);       // pass: ppauro
-        korisnikDao.save(tcosic);       // pass: tcosic
-        korisnikDao.save(vjuhas);       // pass: vjuhas
+        Korisnik iivanovic = korisnikDao.save(new Korisnik("Igor", "Ivanović", "igor.ivanovic@veleri.hr", "3b6d69c25e32c90b85c11c03dfde97e6"));    // pass: iivanovic
+        Korisnik ppauro = korisnikDao.save(new Korisnik("Patrik", "Pauro", "patrik.pauro@veleri.hr", "6c722ef06c1db589caef37c1b5fb8850"));      // pass: ppauro
+        Korisnik tcosic = korisnikDao.save(new Korisnik("Tomislav", "Ćosić", "tomislav.cosic@veleri.hr", "cb3918a280403e87479d2ec7141b32dc"));  // pass: tcosic
+        Korisnik vjuhas = korisnikDao.save(new Korisnik("Vanja", "Juhas", "vanja.juhas@veleri.hr", "9829bcb9e22402246d5f865c74117a16"));        // pass: vjuhas
+        Korisnik dostojic = korisnikDao.save(new Korisnik("Damir", "Ostojić", "damir.ostojic@veleri.hr", "9bddd73fd4e48c8cc0adcd9c75df88be"));    // pass: dostojic
 
         // aplikacije
-        Aplikacija ptw = new Aplikacija("Prijava Turista - Web", "PTW");
-        Aplikacija ptz2 = new Aplikacija("Prijava Turista u TZ", "PTZ2");
-        Aplikacija pos = new Aplikacija("Blagajnička kasa", "POS");
-        Aplikacija rec = new Aplikacija("Recepcijsko poslovanje", "REC2");
-        Aplikacija pro = new Aplikacija("Prodaja smještajnih kapaciteta", "PRO2");
-        Aplikacija gas = new Aplikacija("Gastronomija", "GAS");
-        Aplikacija mje = new Aplikacija("Mjenjačnica", "MJE3");
-        aplikacijaDao.save(ptw);
-        aplikacijaDao.save(ptz2);
-        aplikacijaDao.save(rec);
-        aplikacijaDao.save(pos);
-        aplikacijaDao.save(pro);
-        aplikacijaDao.save(gas);
-        aplikacijaDao.save(mje);
+        Aplikacija ptw = aplikacijaDao.save(new Aplikacija("Prijava Turista - Web", "PTW"));
+        Aplikacija ptz2 = aplikacijaDao.save(new Aplikacija("Prijava Turista u TZ", "PTZ2"));
+        Aplikacija pos = aplikacijaDao.save(new Aplikacija("Blagajnička kasa", "POS"));
+        Aplikacija rec = aplikacijaDao.save(new Aplikacija("Recepcijsko poslovanje", "REC2"));
+        Aplikacija pro = aplikacijaDao.save(new Aplikacija("Prodaja smještajnih kapaciteta", "PRO"));
+        Aplikacija gas = aplikacijaDao.save(new Aplikacija("Gastronomija", "GAS"));
+        Aplikacija mje = aplikacijaDao.save(new Aplikacija("Mjenjačnica", "MJE3"));
 
         // korisnici zaposlenici: ppauro, iivanovic - zaduzeni za vise aplikacija
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, iivanovic));
@@ -109,9 +88,11 @@ public class InitData {
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(gas, ppauro));
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
 
-    }
+        // korisnici klijenti: tcosic, vjuhas - korisnici aplikacija
+        korisnikKlijentDao.save(new KorisnikKlijent(pl, tcosic));
+        korisnikKlijentDao.save(new KorisnikKlijent(ss, vjuhas));
+        korisnikKlijentDao.save(new KorisnikKlijent(imperial, dostojic));
 
-    private void initKlijenti() {
     }
 
     public boolean isInitialised() {

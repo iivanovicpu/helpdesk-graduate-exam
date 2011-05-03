@@ -19,5 +19,5 @@ Upute:
     <property name="hibernate.hbm2ddl.auto" value="create"/>
 
     - ovo kod svakog startanja aplikacije briše sadržaj baze te ponovno kreira prazne tablice
-    - ukljucena opcija developmentMode nakon startanja inicijalizira bazu s testnim odacima
+    - ukljucena opcija developmentMode nakon startanja inicijalizira bazu s testnim odacima - sve tablice osim tablice Prijava
     - u developmentModu odmah nakon startanja moguće je ući samo s hardkodiranim "admin" userom
