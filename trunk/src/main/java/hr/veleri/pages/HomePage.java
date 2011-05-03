@@ -12,12 +12,6 @@ public class HomePage extends AuthenticatedPage {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Constructor that is invoked when page is invoked without a em.
-     *
-     * @param parameters Page parameters
-     */
-
     @SpringBean
     private AppConfiguration appConfiguration;
 

@@ -1,8 +1,11 @@
 package hr.veleri.pages;
 
+import hr.veleri.HelpdeskSession;
+import hr.veleri.data.dataobjects.Korisnik;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.panel.Fragment;
 
 /**
@@ -23,18 +26,19 @@ public class AuthenticatedPage extends WebPage {
         this.navigation = navigation;
     }
 
-    /**
-     * init method must be invoked in constructor of WebPage sub class<br>
-     * this method define navigation for authenticated pages, fill its content, header and userinfo fragments
-     * Fragments must have wicket ids: "content", "subject", "userinInfo"
-     *
-     * @param page AuthenticatedPage - object of AuthenticatedPage subcalss
-     */
     protected void init(AuthenticatedPage page) {
         subjectFragment = new Fragment("header", "header", page);
         contentFragment = new Fragment("content", "content", page);
         loginInfoFragment = new Fragment("userinfo", "userinfo", page);
+
+        initLoginInfo();
+
         addNavigation();
+    }
+
+    private void initLoginInfo() {
+        Korisnik korisnik = ((HelpdeskSession) getSession()).getLoggedInUser();
+        loginInfoFragment.add(new Label("user", korisnik.getIme() + " " + korisnik.getPrezime()));
     }
 
     private void addNavigation() {

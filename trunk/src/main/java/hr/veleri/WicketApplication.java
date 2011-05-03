@@ -35,7 +35,6 @@ public class WicketApplication extends WebApplication {
     @Override
     protected void init() {
         super.init();
-        mountBookmarkablePage("userInfo", UserInfo.class);
         mountBookmarkablePage("event", KlijentiPage.class);
         mountBookmarkablePage("users", RadnikPage.class);
         getMarkupSettings().setDefaultMarkupEncoding("UTF8");
@@ -55,11 +54,6 @@ public class WicketApplication extends WebApplication {
                 });
 
     }
-
-
-    /* (non-Javadoc)
-      * @see org.apache.wicket.Application#getHomePage()
-      */
 
     @Override
     public Class<? extends Page> getHomePage() {

@@ -24,6 +24,8 @@ public class RadnikPage extends AuthenticatedPage {
 
 
     public RadnikPage(final PageParameters pp) {
+        init(RadnikPage.this);
+
         wmc = new WebMarkupContainer("listRadContainer");
 
         wmc.add(new ListView<Korisnik>("listrad", new PropertyModel<List<Korisnik>>(this, "korisnikDao.findAll")) {
@@ -37,7 +39,6 @@ public class RadnikPage extends AuthenticatedPage {
                 item.add(new Label("radnikIme", korisnik.getIme()));
             }
         });
-        init(RadnikPage.this);
         contentFragment.add(wmc);
     }
 
