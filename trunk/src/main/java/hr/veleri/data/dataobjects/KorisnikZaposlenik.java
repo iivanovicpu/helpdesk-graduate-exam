@@ -16,7 +16,7 @@ public class KorisnikZaposlenik extends DomainObject {
     @Column(name = "ID")
     private int id;
 
-    @ManyToOne(targetEntity = Klijent.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = Aplikacija.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "APLIKACIJA_ID")
     private Aplikacija aplikacija;
 

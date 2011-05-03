@@ -33,7 +33,7 @@ public class RadnikPage extends AuthenticatedPage {
             @Override
             protected void populateItem(ListItem<Korisnik> item) {
                 Korisnik korisnik = item.getModelObject();
-                item.add(new Label("radnikId", String.valueOf(korisnik.getRadid())));
+                item.add(new Label("radnikId", String.valueOf(korisnik.getId())));
                 item.add(new Label("radnikIme", korisnik.getIme()));
             }
         });
