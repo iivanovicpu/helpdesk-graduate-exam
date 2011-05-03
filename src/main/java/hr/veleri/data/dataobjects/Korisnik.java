@@ -59,7 +59,15 @@ public class Korisnik extends DomainObject {
         this.ime = ime;
     }
 
-    public boolean authenticate(String username, String password){
+    public String getPrezime() {
+        return prezime;
+    }
+
+    public void setPrezime(String prezime) {
+        this.prezime = prezime;
+    }
+
+    public boolean authenticate(String username, String password) {
         return this.email.equals(username) && this.lozinka.equals(Utilities.getMD5(password));
     }
 
