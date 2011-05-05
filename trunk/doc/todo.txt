@@ -5,10 +5,9 @@ NERIJEŠENO:
 
 ---------------------------
 RIJEŠENO:
-- primjer socket klijenta za irs-proxy
-- primjer web servisa: http://localhost:8080/userInfo/id/1
-- primjer tablice s prikazom podataka iz vezanih tablica (fk)
+
+- stranice: pregled klijenata, korisnika
 - omogućena enkripcija properties-a (persistence.xml), enkriptirati vrijednosti u propertiesMap i upisati u constructor-args OdrzEntityManagerFactoryBean klase
-- primjer autentifikacije (login koji radi: admin <trojanci>)
+- primjer autentifikacije (login koji radi: admin <the MD5 encoder>)
 - primjer osnovnog layout-a s navigacijom (osnovni dijelovi svake stranice: content, header, userinfo)
 

@@ -38,8 +38,8 @@ public class Login extends WebPage {
             @Override
             protected void onSubmit() {
                 try {
-                    // todo: dohvat korisnika iz servisa
                     Korisnik korisnik = korisnikDao.getKorisnik(username, password);
+                    // todo: definirati tip korisnika (administrator, zaposlenik, klijent)
                     ((HelpdeskSession) getSession()).setLoggedInUser(korisnik);
                     if (!continueToOriginalDestination())
                         setResponsePage(HomePage.class);

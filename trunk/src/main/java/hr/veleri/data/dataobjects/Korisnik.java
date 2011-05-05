@@ -1,6 +1,7 @@
 package hr.veleri.data.dataobjects;
 
 import hr.veleri.util.Utilities;
+import org.hibernate.usertype.UserType;
 
 import javax.persistence.*;
 

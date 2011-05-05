@@ -24,5 +24,5 @@ public class HelpdeskSession extends WebSession {
     public void setLoggedInUser(Korisnik loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
-    
+
 }
