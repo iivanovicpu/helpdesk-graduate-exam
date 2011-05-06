@@ -2,3 +2,14 @@ body {
     background-color: #f5f5dc;
     font-family: sans-serif;
 }
+
+.userinfo {
+    position: relative;
+    height: 25px;
+    float: right;
+    font-size: 75%;
+    color: gray;
+    border: black solid 1px;
+    text-align: right;
+    vertical-align: middle;
+}

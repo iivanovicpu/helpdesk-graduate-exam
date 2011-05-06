@@ -34,6 +34,8 @@ public class Korisnik extends DomainObject {
     @Column(name = "LOZINKA")
     private String lozinka;
 
+    private TipKorisnika tipKorisnika;
+
     public Korisnik() {
     }
 
@@ -111,5 +113,13 @@ public class Korisnik extends DomainObject {
     @Override
     public int hashCode() {
         return email.hashCode();
+    }
+
+    public TipKorisnika getTipKorisnika() {
+        return tipKorisnika;
+    }
+
+    public void setTipKorisnika(TipKorisnika tipKorisnika) {
+        this.tipKorisnika = tipKorisnika;
     }
 }

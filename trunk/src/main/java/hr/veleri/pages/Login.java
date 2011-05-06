@@ -3,9 +3,9 @@ package hr.veleri.pages;
 import hr.veleri.AuthenticationException;
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.AppConfiguration;
-import hr.veleri.data.InitData;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;
@@ -39,7 +39,12 @@ public class Login extends WebPage {
             protected void onSubmit() {
                 try {
                     Korisnik korisnik = korisnikDao.getKorisnik(username, password);
-                    // todo: definirati tip korisnika (administrator, zaposlenik, klijent)
+                    if (korisnikDao.isKorisnikZaposlenik(korisnik))
+                        korisnik.setTipKorisnika(TipKorisnika.ZAPOSLENIK);
+                    if (korisnikDao.isKorisnikKlijent(korisnik))
+                        korisnik.setTipKorisnika(TipKorisnika.KLIJENT);
+                    if (korisnik.getTipKorisnika() == null)
+                        korisnik.setTipKorisnika(TipKorisnika.ADMINISTRATOR);
                     ((HelpdeskSession) getSession()).setLoggedInUser(korisnik);
                     if (!continueToOriginalDestination())
                         setResponsePage(HomePage.class);
