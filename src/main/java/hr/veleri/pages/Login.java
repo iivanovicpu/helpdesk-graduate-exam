@@ -3,6 +3,7 @@ package hr.veleri.pages;
 import hr.veleri.AuthenticationException;
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.AppConfiguration;
+import hr.veleri.data.InitData;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
@@ -29,6 +30,11 @@ public class Login extends WebPage {
 
     @SpringBean
     private KorisnikDao korisnikDao;
+
+    @SpringBean
+    private InitData initData;
+
+
 
     public Login() {
         initApplication();
@@ -65,8 +71,16 @@ public class Login extends WebPage {
     }
 
     private void initApplication() {
-
+        initData();
     }
+
+    /* inicijalizira bazu podataka ako je u postavkama uključen developmentMode*/
+    private void initData() {
+        if (appConfiguration.isDevelopmentMode()) {
+            initData.init();
+        }
+    }
+
 
     public String getPassword() {
         return password;
