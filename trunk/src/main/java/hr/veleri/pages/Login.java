@@ -14,6 +14,7 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 /**
@@ -41,6 +42,8 @@ public class Login extends WebPage {
         FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
         add(errorMsg);
         Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
+
+
             @Override
             protected void onSubmit() {
                 try {
