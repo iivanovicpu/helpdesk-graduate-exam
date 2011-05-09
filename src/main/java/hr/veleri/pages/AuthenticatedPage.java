@@ -6,6 +6,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Fragment;
 
 /**
@@ -39,6 +40,8 @@ public class AuthenticatedPage extends WebPage {
     private void initLoginInfo() {
         Korisnik korisnik = ((HelpdeskSession) getSession()).getLoggedInUser();
         loginInfoFragment.add(new Label("user", korisnik.getIme() + " " + korisnik.getPrezime() + "(" + korisnik.getTipKorisnika() + ")"));
+        Link logoutLink = new LogoutLink("logout");
+        loginInfoFragment.add(logoutLink);
     }
 
     private void addNavigation() {
