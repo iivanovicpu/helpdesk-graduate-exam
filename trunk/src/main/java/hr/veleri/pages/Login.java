@@ -38,10 +38,16 @@ public class Login extends WebPage {
 
 
     public Login() {
+        /* logout - ako je netko vec logiran */
+        HelpdeskSession session = (HelpdeskSession) getSession();
+        session.setLoggedInUser(null);
+
         initApplication();
         FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
         add(errorMsg);
+
         Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
+//        Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
 
 
             @Override
@@ -66,11 +72,6 @@ public class Login extends WebPage {
         form.add(new TextField("username"));
         form.add(new PasswordTextField("password"));
         add(new Label("t", "properties: " + "-"));
-
-//        todo: ako je development mode ukljucen ponovno napuni bazu
-//        System.out.println("-- application: " + appConfiguration.getAppName());
-//        System.out.println("-- version: " + appConfiguration.getVersion());
-//        System.out.println("-- devMode: " + appConfiguration.isDevelopmentMode());
     }
 
     private void initApplication() {
@@ -79,6 +80,9 @@ public class Login extends WebPage {
 
     /* inicijalizira bazu podataka ako je u postavkama uključen developmentMode*/
     private void initData() {
+        HelpdeskSession session = (HelpdeskSession) getSession();
+        session.setLoggedInUser(null);
+
         if (appConfiguration.isDevelopmentMode()) {
             initData.init();
         }
