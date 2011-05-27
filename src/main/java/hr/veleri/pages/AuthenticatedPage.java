@@ -40,7 +40,8 @@ public class AuthenticatedPage extends WebPage {
     private void initLoginInfo() {
         Korisnik korisnik = ((HelpdeskSession) getSession()).getLoggedInUser();
         loginInfoFragment.add(new Label("user", korisnik.getIme() + " " + korisnik.getPrezime() + "(" + korisnik.getTipKorisnika() + ")"));
-        Link logoutLink = new LogoutLink("logout");
+        Link logoutLink = new LogoutLink("logout", Login.class);
+
         loginInfoFragment.add(logoutLink);
     }
 
