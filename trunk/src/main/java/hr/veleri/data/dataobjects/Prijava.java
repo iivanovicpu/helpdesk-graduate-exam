@@ -24,6 +24,14 @@ public class Prijava extends DomainObject {
     private Date pridatum;
 
     private Date pridatumzap;
+
+    @ManyToOne(targetEntity = KorisnikKlijent.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "KORISNIK_ID")
+    private KorisnikKlijent prijavio;
+
+    @ManyToOne(targetEntity = Aplikacija.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "APLIKACIJA_ID")
+    private Aplikacija aplikacija;
     
     private String opis;
 
