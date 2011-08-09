@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "KLIJENT")
-public class Klijent extends DomainObject {
+public class Klijent  extends DomainObject{
 
     @Id
     @GeneratedValue

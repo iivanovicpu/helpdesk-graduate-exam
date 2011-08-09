@@ -1,5 +1,8 @@
 NERIJEŠENO:
-- nakon logina 3 različita sučelja (ovisno o tipu korisnika)
+- nakon logina 3 različita sučelja (ovisno o tipu korisnika):
+    administrator: pregled i ažuriranje matičnih podataka
+    zaposlenik: pregled prijava i dodavanje intervencija
+    korisnik: pregled vlastith prijava i dodavanje prijava
 - pregledi s sortiranjem, paginacijom, dodaj - izmjeni - izbriši, (filtiriranje ??)
 
 

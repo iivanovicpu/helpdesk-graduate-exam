@@ -12,10 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "KORISNIK")
-public class Korisnik extends DomainObject {
-
-    private static final long serialVersionUID = 1259377496669050427L;
-
+public class Korisnik  extends DomainObject{
 
     @Id
     @GeneratedValue
