@@ -16,10 +16,18 @@
 </head>
 <body>
 
-<wicket:fragment wicket:id="header">HelpDesk v1.0</wicket:fragment>
+<wicket:fragment wicket:id="header">HelpDesk v1.0
+</wicket:fragment>
 
 <wicket:fragment wicket:id="userinfo">
-    <div wicket:id="user">home- userinfo</div><br><a href=# wicket:id="logout">Odjavi se</a>
+    <form wicket:id="setLocale">
+            <select wicket:id="selectedLocale">
+            <option value="en">English</option>
+            <option value="hr">Hrvatski</option>
+        </select>
+        <input type="submit" value="Change"/>
+    </form>
+    <div wicket:id="user">home- userinfo</div><br><a href=# wicket:id="logout"><wicket:message key="logout">Odjavi se</wicket:message></a>
 </wicket:fragment>
 
 <span wicket:id="navigation"/>

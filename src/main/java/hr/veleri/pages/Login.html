@@ -9,19 +9,27 @@
 <body>
 <span wicket:id="errorMsg"></span>
 
+<form wicket:id="setLocale">
+        <select wicket:id="selectedLocale">
+        <option value="en">English</option>
+        <option value="hr">Hrvatski</option>
+    </select>
+    <input type="submit" value="Change" wicket:message="value:change"/>
+</form>
+
 <form wicket:id="loginForm">
     <table>
         <tr>
-            <td>E-mail:</td>
+            <td><wicket:message key="email">E-mail</wicket:message></td>
             <td><input wicket:id="username" type="text"></td>
         </tr>
         <tr>
-            <td>Password:</td>
+            <td><wicket:message key="password">Password</wicket:message></td>
             <td><input wicket:id="password" type="password"></td>
         </tr>
         <tr>
             <td></td>
-            <td><input type="submit" value="login"></td>
+            <td><input type="submit" value="login" wicket:message="value:login"></td>
         </tr>
     </table>
 </form>
