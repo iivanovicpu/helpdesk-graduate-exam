@@ -6,8 +6,15 @@ import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Fragment;
+import org.apache.wicket.model.PropertyModel;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * User: iivanovic
@@ -43,6 +50,15 @@ public class AuthenticatedPage extends WebPage {
         Link logoutLink = new LogoutLink("logout", Login.class);
 
         loginInfoFragment.add(logoutLink);
+
+        /* forma za promjenu jezika */
+        Form form = new Form("setLocale");
+        loginInfoFragment.add(form);
+        List supportedLocales = new ArrayList();
+        supportedLocales.add(Locale.ENGLISH);
+        supportedLocales.add(new Locale("hr"));
+        DropDownChoice selectedLocale = new DropDownChoice("selectedLocale", new PropertyModel(getSession(), "locale"), supportedLocales);
+        form.add(selectedLocale);
     }
 
     private void addNavigation() {

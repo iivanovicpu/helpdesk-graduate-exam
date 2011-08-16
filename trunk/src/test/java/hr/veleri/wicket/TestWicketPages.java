@@ -1,6 +1,6 @@
 package hr.veleri.wicket;
 
-import hr.veleri.WicketApplication;
+import hr.veleri.HelpdeskApplication;
 import hr.veleri.pages.HomePage;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.apache.wicket.spring.test.ApplicationContextMock;
@@ -23,7 +23,7 @@ public class TestWicketPages {
 
 //        acm.putBean("eventDao", eventDao);
 
-        tester = new WicketTester(new WicketApplication() {
+        tester = new WicketTester(new HelpdeskApplication() {
             /* (non-Javadoc)
                 * @see hr.veleri.WicketApplication#getGuiceInjector()
                 */

@@ -9,13 +9,19 @@ import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * User: iivanovic
@@ -45,6 +51,16 @@ public class Login extends WebPage {
         initApplication();
         FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
         add(errorMsg);
+
+        /* forma za promjenu jezika */
+        Form localeForm = new Form("setLocale");
+        add(localeForm);
+        List supportedLocales = new ArrayList();
+        supportedLocales.add(Locale.ENGLISH);
+        supportedLocales.add(new Locale("hr"));
+        DropDownChoice selectedLocale = new DropDownChoice("selectedLocale", new PropertyModel(getSession(), "locale"), supportedLocales);
+        localeForm.add(selectedLocale);
+
 
         Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
 //        Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
