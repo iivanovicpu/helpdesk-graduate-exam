@@ -9,10 +9,7 @@ import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.PasswordTextField;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
@@ -42,7 +39,6 @@ public class Login extends WebPage {
     private InitData initData;
 
 
-
     public Login() {
         /* logout - ako je netko vec logiran */
         HelpdeskSession session = (HelpdeskSession) getSession();
@@ -55,16 +51,22 @@ public class Login extends WebPage {
         /* forma za promjenu jezika */
         Form localeForm = new Form("setLocale");
         add(localeForm);
-        List supportedLocales = new ArrayList();
-        supportedLocales.add(Locale.ENGLISH);
-        supportedLocales.add(new Locale("hr"));
-        DropDownChoice selectedLocale = new DropDownChoice("selectedLocale", new PropertyModel(getSession(), "locale"), supportedLocales);
-        localeForm.add(selectedLocale);
+        localeForm.add(new SubmitLink("switchToHr") {
+            @Override
+            public void onSubmit() {
+                getSession().setLocale(new Locale("hr"));
+            }
+        });
+        localeForm.add(new SubmitLink("switchToEn") {
+            @Override
+            public void onSubmit() {
+                getSession().setLocale(Locale.ENGLISH);
+            }
+
+        });
 
 
-        Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
-//        Form form = new Form("loginForm", new CompoundPropertyModel(this)) {
-
+        Form form = new Form<IModel>("loginForm", new CompoundPropertyModel<IModel>(this)) {
 
             @Override
             protected void onSubmit() {

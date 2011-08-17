@@ -10,11 +10,13 @@
 <span wicket:id="errorMsg"></span>
 
 <form wicket:id="setLocale">
-        <select wicket:id="selectedLocale">
-        <option value="en">English</option>
-        <option value="hr">Hrvatski</option>
-    </select>
-    <input type="submit" value="Change" wicket:message="value:change"/>
+        <a wicket:id="switchToHr">hr</a>
+        <a wicket:id="switchToEn">en</a>
+        <!--<select wicket:id="selectedLocale">-->
+        <!--<option value="en">English</option>-->
+        <!--<option value="hr">Hrvatski</option>-->
+    <!--</select>-->
+    <!--<input type="submit" value="Change" wicket:message="value:change"/>-->
 </form>
 
 <form wicket:id="loginForm">
