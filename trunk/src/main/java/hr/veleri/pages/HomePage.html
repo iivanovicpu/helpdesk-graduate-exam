@@ -21,11 +21,8 @@
 
 <wicket:fragment wicket:id="userinfo">
     <form wicket:id="setLocale">
-            <select wicket:id="selectedLocale">
-            <option value="en">English</option>
-            <option value="hr">Hrvatski</option>
-        </select>
-        <input type="submit" value="Change"/>
+            <a wicket:id="switchToHr">hr</a>
+            <a wicket:id="switchToEn">en</a>
     </form>
     <div wicket:id="user">home- userinfo</div><br><a href=# wicket:id="logout"><wicket:message key="logout">Odjavi se</wicket:message></a>
 </wicket:fragment>
