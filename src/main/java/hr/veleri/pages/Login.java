@@ -49,23 +49,6 @@ public class Login extends WebPage {
         add(errorMsg);
 
         add(new LocaleFormPanel("localePanel"));
-        /* forma za promjenu jezika */
-//        Form localeForm = new Form("setLocale");
-//        add(localeForm);
-//        localeForm.add(new SubmitLink("switchToHr") {
-//            @Override
-//            public void onSubmit() {
-//                getSession().setLocale(new Locale("hr"));
-//            }
-//        });
-//        localeForm.add(new SubmitLink("switchToEn") {
-//            @Override
-//            public void onSubmit() {
-//                getSession().setLocale(Locale.ENGLISH);
-//            }
-//
-//        });
-
 
         Form form = new Form<IModel>("loginForm", new CompoundPropertyModel<IModel>(this)) {
 
