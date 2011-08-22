@@ -3,13 +3,16 @@ body {
     font-family: sans-serif;
 }
 
+.localePanel {
+    color: gray;
+    font-size: 75%;
+}
+
 .userinfo {
-    position: relative;
-    height: 25px;
-    float: right;
     font-size: 75%;
     color: gray;
-    border: black solid 1px;
-    text-align: right;
-    vertical-align: middle;
+}
+
+.navigation {
+    vertical-align: top;
 }

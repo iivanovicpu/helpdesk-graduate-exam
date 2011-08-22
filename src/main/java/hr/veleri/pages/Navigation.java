@@ -14,7 +14,13 @@ public abstract class Navigation extends Panel {
         add(getUserInfo("userinfo"));
         add(getSubject("header"));
         add(getContent("content"));
+        addLocalePanel();
     }
+
+    private void addLocalePanel() {
+        add(new LocaleFormPanel("localePanel"));
+    }
+
 
     public abstract Component getSubject(String id);
 

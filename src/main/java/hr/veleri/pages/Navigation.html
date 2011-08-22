@@ -4,7 +4,8 @@
 <head>
     <title>Održavanje - Istra Informatički Inženjering</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="DC.Subject" content="aplikacija održavanje, aplikacija, servis, istra informatički inženjering, informaticki inzenjering, informatika"/>
+    <meta name="DC.Subject"
+          content="aplikacija održavanje, aplikacija, servis, istra informatički inženjering, informaticki inzenjering, informatika"/>
     <meta name="DC.Title" content="Održavanje - Istra Informatički Inženjering"/>
     <meta name="DC.Subject" content="Aplikacija održavanje/eksperimentalni ticketing servis"/>
     <meta name="robots" content="index,follow">
@@ -14,27 +15,43 @@
 
 </head>
 <wicket:panel>
-    <!--komponenta subklase-->
-    <h1><span wicket:id="header">p2</span></h1>
-        <div wicket:id="userinfo" class="userinfo">
-            test
-        </div>
 
-    <table>
-        <tr>
-            <td width="40%">
-                <wicket:link>
-                    <a href="HomePage.html"><wicket:message key="navigation.home">Home</wicket:message></a><br>
-                    <a href="RadnikPage.html"><wicket:message key="navigation.users">Korisnici</wicket:message></a><br>
-                    <a href="PrijavePage.html"><wicket:message key="navigation.tickets">Prijave</wicket:message></a><br>
-                    <a href="KlijentiPage.html"><wicket:message key="navigation.clients">Klijenti</wicket:message></a><br>
-                </wicket:link>
-            </td>
-            <td>
-                <!--komponenta sub klase-->
-                <span wicket:id="content">p1</span>
-            </td>
-        </tr>
-    </table>
+    <div class="navigation">
+
+        <h2><span wicket:id="header">p2</span></h2>
+
+        <table style="padding-left: 30px; padding-right: 20px; padding-bottom: 15px; border-spacing: 10px; border-collapse: separate; ">
+            <tr>
+                <td width="40%">
+                    <wicket:link>
+                        <a href="HomePage.html">
+                            <wicket:message key="navigation.home">Home</wicket:message>
+                        </a><br>
+                        <a href="KorisniciPage.html">
+                            <wicket:message key="navigation.users">Korisnici</wicket:message>
+                        </a><br>
+                        <a href="PrijavePage.html">
+                            <wicket:message key="navigation.tickets">Prijave</wicket:message>
+                        </a><br>
+                        <a href="KlijentiPage.html">
+                            <wicket:message key="navigation.clients">Klijenti</wicket:message>
+                        </a><br>
+                        <hr>
+                        <div wicket:id="userinfo" class="userinfo">
+                            test
+                        </div>
+                        <hr>
+                        <div class="localePanel">
+                            <span wicket:id="localePanel"/>
+                        </div>
+                    </wicket:link>
+                </td>
+                <td>
+                    <!--komponenta sub klase-->
+                    <span wicket:id="content">p1</span>
+                </td>
+            </tr>
+        </table>
+    </div>
 </wicket:panel>
 </html>

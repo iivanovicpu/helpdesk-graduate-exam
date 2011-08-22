@@ -17,14 +17,14 @@ import java.util.List;
  * Date: 04.10.2010.
  * Time: 13:58:51
  */
-public class RadnikPage extends AuthenticatedPage {
+public class KorisniciPage extends AuthenticatedPage {
 
     @SpringBean
     private KorisnikDao korisnikDao;
 
 
-    public RadnikPage(final PageParameters pp) {
-        init(RadnikPage.this);
+    public KorisniciPage(final PageParameters pp) {
+        init(KorisniciPage.this);
 
         wmc = new WebMarkupContainer("listRadContainer");
 

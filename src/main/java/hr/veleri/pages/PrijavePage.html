@@ -8,12 +8,15 @@
 
 </head>
 <body>
-<span wicket:id="localePanel"/>
-<span wicket:id="navigation"/>
+
 <wicket:fragment wicket:id="userinfo">
-    <span wicket:id="user">prijave- userinfo</span><br><a href=# wicket:id="logout">Odjavi se</a>
+    <span wicket:id="user">prijave- userinfo</span><br><a href=# wicket:id="logout"><wicket:message key="logout">Odjavi se</wicket:message></a>
 </wicket:fragment>
-<wicket:fragment wicket:id="header">Prijave</wicket:fragment>
+
+<span wicket:id="navigation"/>
+
+<wicket:fragment wicket:id="header">HelpDesk v1.0 <wicket:message key="prijavePage.title">Tickets</wicket:message></wicket:fragment>
+
 <wicket:fragment wicket:id="content">
     <div wicket:id="listPrijavaContainer">
         <table border="1" wicket:id="entries"></table>
