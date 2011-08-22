@@ -73,7 +73,6 @@ public class Login extends WebPage {
         add(form);
         form.add(new TextField("username"));
         form.add(new PasswordTextField("password"));
-        add(new Label("t", "properties: " + "-"));
     }
 
     private void initApplication() {

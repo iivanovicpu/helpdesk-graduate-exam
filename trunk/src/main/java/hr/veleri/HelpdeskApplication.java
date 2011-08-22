@@ -35,8 +35,11 @@ public class HelpdeskApplication extends WebApplication {
     @Override
     protected void init() {
         super.init();
-        mountBookmarkablePage("event", KlijentiPage.class);
-        mountBookmarkablePage("users", RadnikPage.class);
+        mountBookmarkablePage("klijenti", KlijentiPage.class);
+        mountBookmarkablePage("korisnici", KorisniciPage.class);
+        mountBookmarkablePage("login", Login.class);
+        mountBookmarkablePage("prijave", PrijavePage.class);
+        mountBookmarkablePage("home", HomePage.class);
         getMarkupSettings().setDefaultMarkupEncoding("UTF8");
         addComponentInstantiationListener(getSpringInjector());
         getMarkupSettings().setStripWicketTags(true);
