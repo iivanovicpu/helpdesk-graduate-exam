@@ -2,6 +2,8 @@ package hr.veleri.data;
 
 import hr.veleri.data.dao.interfaces.*;
 import hr.veleri.data.dataobjects.*;
+import hr.veleri.util.UtilitiesDate;
+import org.apache.commons.httpclient.util.DateUtil;
 
 /**
  * User: iivanovic
@@ -20,6 +22,8 @@ public class InitData {
     private AplikacijaDao aplikacijaDao;
 
     private KorisnikZaposlenikDao korisnikZaposlenikDao;
+
+    private PrijaveDao prijaveDao;
 
 
     public void setKlijentDao(KlijentDao klijentDao) {
@@ -40,6 +44,10 @@ public class InitData {
 
     public void setKorisnikZaposlenikDao(KorisnikZaposlenikDao korisnikZaposlenikDao) {
         this.korisnikZaposlenikDao = korisnikZaposlenikDao;
+    }
+
+    public void setPrijaveDao(PrijaveDao prijaveDao) {
+        this.prijaveDao = prijaveDao;
     }
 
     public void init() {
@@ -89,9 +97,21 @@ public class InitData {
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
 
         // korisnici klijenti: tcosic, vjuhas - korisnici aplikacija
-        korisnikKlijentDao.save(new KorisnikKlijent(pl, tcosic));
-        korisnikKlijentDao.save(new KorisnikKlijent(ss, vjuhas));
-        korisnikKlijentDao.save(new KorisnikKlijent(imperial, dostojic));
+        KorisnikKlijent korisnikKlijent = new KorisnikKlijent(pl, tcosic);
+        KorisnikKlijent korisnikKlijent1 = new KorisnikKlijent(ss, vjuhas);
+        KorisnikKlijent korisnikKlijent2 = new KorisnikKlijent(imperial, dostojic);
+
+        korisnikKlijentDao.save(korisnikKlijent);
+        korisnikKlijentDao.save(korisnikKlijent1);
+        korisnikKlijentDao.save(korisnikKlijent2);
+
+        // prijave:
+        Prijava p1 = new Prijava(1,ptw,"","Kako napraviti aktivaciju korisničkog računa", UtilitiesDate.getDate(2011,5,25),UtilitiesDate.getDate(2011,5,25),korisnikKlijent);
+        Prijava p2 = new Prijava(2,ptz2,"","Prilikom prihvata prijava javlja se greška nedefinirane zemlje državljanstva (XXK)", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent1);
+        Prijava p3 = new Prijava(3,pos,"Veza: recepcijsko poslovanje","Greška kod naplate računa na račun gosta", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent2);
+        prijaveDao.save(p1);
+        prijaveDao.save(p2);
+        prijaveDao.save(p3);
 
     }
 

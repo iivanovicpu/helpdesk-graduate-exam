@@ -43,12 +43,7 @@ public class AuthenticatedPage extends WebPage {
         initLoginInfo();
 
         addNavigation();
-//        addLocalePanel();
     }
-
-//    private void addLocalePanel() {
-//        add(new LocaleFormPanel("localePanel"));
-//    }
 
     private void initLoginInfo() {
         Korisnik korisnik = ((HelpdeskSession) getSession()).getLoggedInUser();

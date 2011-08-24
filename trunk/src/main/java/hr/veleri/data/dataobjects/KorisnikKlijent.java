@@ -75,4 +75,9 @@ public class KorisnikKlijent  extends DomainObject {
         result = 31 * result + korisnik.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return korisnik.getPrezime() + " "+ korisnik.getIme() + " (" + klijent.getNaziv() + ")";
+    }
 }

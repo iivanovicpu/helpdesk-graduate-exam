@@ -70,4 +70,9 @@ public class Aplikacija extends DomainObject{
     public int hashCode() {
         return sifra.hashCode();
     }
+
+    @Override
+    public String toString() {
+        return sifra + " (" + naziv + ")";
+    }
 }
