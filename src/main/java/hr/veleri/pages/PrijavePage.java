@@ -37,7 +37,11 @@ public class PrijavePage extends AuthenticatedPage {
 //                    }
 //                },
                 new PropertyColumn(new Model("Rbr"), "prirbr", "prirbr"),
-                new PropertyColumn(new Model("Phone number"), "pridatum", "pridatum"),
+                new PropertyColumn(new Model("Datum"), "pridatum", "pridatum"),
+                new PropertyColumn(new Model("Korisnik"), "prijavio", "prijavio"),
+                new PropertyColumn(new Model("Aplikacija"), "aplikacija", "aplikacija"),
+                new PropertyColumn(new Model("Opis"), "opis", "opis"),
+                new PropertyColumn(new Model("Napomena"), "napomena", "napomena"),
 //                new AbstractColumn(new Model("Delete")) {
 //                    public void populateItem(Item cellItem, String componentId, IModel rowModel) {
 //                        int entryId = ((PhoneBookEntry) rowModel.getObject()).getId();

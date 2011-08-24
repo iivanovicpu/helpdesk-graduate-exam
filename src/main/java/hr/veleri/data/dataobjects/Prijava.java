@@ -25,11 +25,11 @@ public class Prijava extends DomainObject {
 
     private Date pridatumzap;
 
-    @ManyToOne(targetEntity = KorisnikKlijent.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = KorisnikKlijent.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "KORISNIK_ID")
     private KorisnikKlijent prijavio;
 
-    @ManyToOne(targetEntity = Aplikacija.class, fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = Aplikacija.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "APLIKACIJA_ID")
     private Aplikacija aplikacija;
     
@@ -39,6 +39,19 @@ public class Prijava extends DomainObject {
 
     public String getNapomena() {
         return napomena;
+    }
+
+    public Prijava() {
+    }
+
+    public Prijava(long prirbr, Aplikacija aplikacija, String napomena, String opis, Date pridatum, Date pridatumzap, KorisnikKlijent prijavio) {
+        this.prirbr = prirbr;
+        this.aplikacija = aplikacija;
+        this.napomena = napomena;
+        this.opis = opis;
+        this.pridatum = pridatum;
+        this.pridatumzap = pridatumzap;
+        this.prijavio = prijavio;
     }
 
     public void setNapomena(String napomena) {
