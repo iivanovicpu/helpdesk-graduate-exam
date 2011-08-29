@@ -37,9 +37,15 @@ public class ConfigurationDecryptor {
         * */
 
 //        ConfigurationDecryptor decryptor = new ConfigurationDecryptor();
+        System.out.println("-------- PostgreSQL primjer: ");
         encryptor.setPassword(ENC_PASSWORD);
         System.out.println("radninalog: " + encryptor.encrypt("radninalog"));
         System.out.println("jdbc:postgresql://localhost:5432/helpdesk: " + encryptor.encrypt("jdbc:postgresql://localhost:5432/helpdesk"));
+        System.out.println("-------- HSQLDB primjer: ");
+
+        System.out.println("sa: " + encryptor.encrypt("sa"));
+        System.out.println(": " + encryptor.encrypt(""));
+        System.out.println("jdbc:hsqldb:file:helpdesk: " + encryptor.encrypt("jdbc:hsqldb:file:helpdesk"));
     }
 
 
