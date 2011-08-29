@@ -81,6 +81,12 @@
             <version>8.2-504.jdbc3</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.10</version>
+        </dependency>
+
         <!--for web services-->
         <dependency>
             <groupId>xstream</groupId>
@@ -189,6 +195,23 @@
             <version>3.1</version>
         </dependency>
 
+        <!--za startanje bez potrebe za vanjskim web poslužiteljem, sa Main klasom-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jettyVersion}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -247,6 +270,15 @@
                 <artifactId>maven-jetty-plugin</artifactId>
                 <version>${jetty.version}</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.2</version>
+                <configuration>
+                    <mainClass>hr.veleri.Main</mainClass>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
@@ -255,6 +287,8 @@
         <wicket.version>1.4.12</wicket.version>
         <jetty.version>6.1.25</jetty.version>
         <org.springframework.version>3.0.4.RELEASE</org.springframework.version>
+        <jettyVersion>7.3.1.v20110307</jettyVersion>
+        <version>1.0</version>
     </properties>
 
 </project>

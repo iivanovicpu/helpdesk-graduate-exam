@@ -8,10 +8,17 @@
     <bean id="entityManagerFactory" class="hr.veleri.HelpdeskEntityManagerFactoryBean">
         <constructor-arg>
             <map>
+                <!-- PostgreSQL -->
+                <!--<entry key="hibernate.connection.url"-->
+                       <!--value="vJ5cbxcNMxtArkDN8Bsa11NW1xarTgvZIjX+Jugldf+sMFgCLG6n4FSx7OsDfkDu+zm7gNBkur0="/>-->
+                <!--<entry key="hibernate.connection.user" value="zJEoXb+5KEE9ZXrHNwsHh6XHUIEBgGz2"/>-->
+                <!--<entry key="hibernate.connection.password" value="2ZshoUtU2wNYkL9DLKscBTwYaOSDlS/m"/>-->
+
+                <!-- HSQLdb -->
                 <entry key="hibernate.connection.url"
-                       value="vJ5cbxcNMxtArkDN8Bsa11NW1xarTgvZIjX+Jugldf+sMFgCLG6n4FSx7OsDfkDu+zm7gNBkur0="/>
-                <entry key="hibernate.connection.user" value="zJEoXb+5KEE9ZXrHNwsHh6XHUIEBgGz2"/>
-                <entry key="hibernate.connection.password" value="2ZshoUtU2wNYkL9DLKscBTwYaOSDlS/m"/>
+                       value="egOjmOGzSWOQ1+dc5bFRVles/yxAHJ2w9bpbOfM3Lecj4VOG+p9M/g=="/>
+                <entry key="hibernate.connection.user" value="FEM7v6w0u+i+ax4HikMtsg=="/>
+                <entry key="hibernate.connection.password" value="xbcNK05UJzFN4dxStyoTeg=="/>
             </map>
         </constructor-arg>
         <property name="persistenceUnitName" value="helpdeskJpaUnit"/>
