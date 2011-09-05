@@ -16,42 +16,41 @@
 </head>
 <wicket:panel>
 
-    <div class="navigation">
+    <div id="container">
+        <div id="header">
+            <h2><span wicket:id="header">p2</span></h2>
+        </div>
+        <div id="navigation">
+            <ul>
+                <wicket:link>
+                    <li><a href="HomePage.html">
+                        <wicket:message key="navigation.home">Home</wicket:message>
+                    </a></li>
+                    <li><a href="KorisniciPage.html">
+                        <wicket:message key="navigation.users">Korisnici</wicket:message>
+                    </a></li>
+                    <li><a href="PrijavePage.html">
+                        <wicket:message key="navigation.tickets">Prijave</wicket:message>
+                    </a></li>
+                    <li><a href="KlijentiPage.html">
+                        <wicket:message key="navigation.clients">Klijenti</wicket:message>
+                    </a></li>
+                </wicket:link>
+            </ul>
+        </div>
 
-        <h2><span wicket:id="header">p2</span></h2>
+        <div id="content">
+            <span wicket:id="content">p1</span>
+        </div>
 
-        <table style="padding-left: 30px; padding-right: 20px; padding-bottom: 15px; border-spacing: 10px; border-collapse: separate; ">
-            <tr>
-                <td width="40%">
-                    <wicket:link>
-                        <a href="HomePage.html">
-                            <wicket:message key="navigation.home">Home</wicket:message>
-                        </a><br>
-                        <a href="KorisniciPage.html">
-                            <wicket:message key="navigation.users">Korisnici</wicket:message>
-                        </a><br>
-                        <a href="PrijavePage.html">
-                            <wicket:message key="navigation.tickets">Prijave</wicket:message>
-                        </a><br>
-                        <a href="KlijentiPage.html">
-                            <wicket:message key="navigation.clients">Klijenti</wicket:message>
-                        </a><br>
-                        <hr>
-                        <div wicket:id="userinfo" class="userinfo">
-                            test
-                        </div>
-                        <hr>
-                        <div class="localePanel">
-                            <span wicket:id="localePanel"/>
-                        </div>
-                    </wicket:link>
-                </td>
-                <td>
-                    <!--komponenta sub klase-->
-                    <span wicket:id="content">p1</span>
-                </td>
-            </tr>
-        </table>
+        <div id="footer">
+            <div wicket:id="userinfo" class="userinfo">
+                userinfo
+            </div>
+            <div class="localePanel">
+                <span wicket:id="localePanel"/>
+            </div>
+        </div>
     </div>
 </wicket:panel>
 </html>

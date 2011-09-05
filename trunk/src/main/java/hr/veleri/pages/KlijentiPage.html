@@ -7,19 +7,22 @@
     <title></title>
 </head>
 <body>
-
-<wicket:fragment wicket:id="userinfo">
-    <span wicket:id="user">klijenti- userinfo</span><br><a href=# wicket:id="logout"><wicket:message key="logout">Logout</wicket:message></a>
+<wicket:fragment wicket:id="header">HelpDesk v1.0 -
+    <wicket:message key="clientsPage.title">Clients</wicket:message>
 </wicket:fragment>
 
-<span wicket:id="navigation"/>
 
-<wicket:fragment wicket:id="header">HelpDesk v1.0 - <wicket:message key="clientsPage.title">Clients</wicket:message></wicket:fragment>
+<span wicket:id="navigation"/>
 
 <wicket:fragment wicket:id="content">
     <div wicket:id="listKlijentContainer">
         <table border="1" wicket:id="entries"></table>
     </div>
+</wicket:fragment>
+<wicket:fragment wicket:id="userinfo">
+    <span wicket:id="user">klijenti- userinfo</span><br><a href=# wicket:id="logout">
+    <wicket:message key="logout">Logout</wicket:message>
+</a>
 </wicket:fragment>
 </body>
 </html>

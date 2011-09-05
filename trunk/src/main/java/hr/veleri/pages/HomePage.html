@@ -15,19 +15,20 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 <body>
-
-<wicket:fragment wicket:id="userinfo">
-    <div wicket:id="user">home- userinfo</div><br><a href=# wicket:id="logout"><wicket:message key="logout">Odjavi se</wicket:message></a>
+<wicket:fragment wicket:id="header">HelpDesk v1.0 -
+    <wicket:message key="homePage.title">Home</wicket:message>
 </wicket:fragment>
 
 <span wicket:id="navigation"/>
 
-<wicket:fragment wicket:id="header">HelpDesk v1.0 - <wicket:message key="homePage.title">Home</wicket:message></wicket:fragment>
-
-
-
 <wicket:fragment wicket:id="content">Početna stranica</wicket:fragment>
 
+<wicket:fragment wicket:id="userinfo">
+    <div wicket:id="user">home- userinfo</div>
+    <br><a href=# wicket:id="logout">
+    <wicket:message key="logout">Odjavi se</wicket:message>
+</a>
+</wicket:fragment>
 </body>
 </html>
 
