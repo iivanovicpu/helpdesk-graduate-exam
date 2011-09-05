@@ -54,6 +54,46 @@ public class PrijaveImp extends AbstractDaoJPAImpl<Prijava> implements PrijaveDa
                     }
                 });
             }
+            if (sortParam.getProperty().equals("pridatum")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Prijava entry1 = (Prijava) arg0;
+                        Prijava entry2 = (Prijava) arg1;
+                        int result = String.valueOf(entry1.getPridatum()).compareTo(String.valueOf(entry2.getPridatum()));
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("prijavio")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Prijava entry1 = (Prijava) arg0;
+                        Prijava entry2 = (Prijava) arg1;
+                        int result = String.valueOf(entry1.getPrijavio().getKorisnik()).compareTo(String.valueOf(entry2.getPrijavio().getKorisnik()));
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("aplikacija")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Prijava entry1 = (Prijava) arg0;
+                        Prijava entry2 = (Prijava) arg1;
+                        int result = String.valueOf(entry1.getAplikacija()).compareTo(String.valueOf(entry2.getAplikacija()));
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("opis")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Prijava entry1 = (Prijava) arg0;
+                        Prijava entry2 = (Prijava) arg1;
+                        int result = String.valueOf(entry1.getOpis()).compareTo(String.valueOf(entry2.getOpis()));
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
         }
         return sortedEntries.subList(first, first + count);
     }

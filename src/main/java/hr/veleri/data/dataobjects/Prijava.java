@@ -131,4 +131,12 @@ public class Prijava extends DomainObject {
                 ", opis='" + opis + '\'' +
                 '}';
     }
+
+    public KorisnikKlijent getPrijavio() {
+        return prijavio;
+    }
+
+    public Aplikacija getAplikacija() {
+        return aplikacija;
+    }
 }
