@@ -3,10 +3,12 @@ package hr.veleri.pages;
 import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
@@ -48,11 +50,12 @@ public class KlijentiPage extends AuthenticatedPage {
         };
 //        DefaultDataTable dataTable = new DefaultDataTable("entries", columns, provider.get(), 3);
         /* za custom tablicu ne može se koristiti DefaultDataTable klasa */
-        DataTable dataTable = new DataTable("entries", columns, provider, 15) {
+        DataTable dataTable = new DataTable("entries", columns, provider, 5) {
             protected Item newRowItem(String id, int index, IModel model) {
                 return new OddEvenItem(id, index, model);
             }
         };
+
         dataTable.addTopToolbar(new HeadersToolbar(dataTable, provider));
         dataTable.addBottomToolbar(new NavigationToolbar(dataTable) {
         });

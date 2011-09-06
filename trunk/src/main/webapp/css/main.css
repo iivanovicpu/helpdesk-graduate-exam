@@ -1,6 +1,17 @@
+body {
+    background-color: #f5f5dc;
+    font-family: sans-serif;
+}
+
+table {
+    width: 100%;
+    border: 1px;
+    border-collapse: collapse;
+}
+
 #container {
     margin: 0 auto;
-    width: 600px;
+    width: 700px;
     background: #fff;
 }
 
@@ -15,7 +26,7 @@
 
 #navigation {
     float: left;
-    width: 600px;
+    width: 700px;
     background: #333;
 }
 
@@ -48,7 +59,7 @@
 }
 
 #content h2 {
-    color: #000;
+    color: gray;
     font-size: 160%;
     margin: 0 0 .5em;
 }
@@ -60,41 +71,12 @@
     height: 1%;
 }
 
-/*body {*/
-/*background-color: #f5f5dc;*/
-/*font-family: sans-serif;*/
-/*}*/
+.localePanel {
+    color: gray;
+    font-size: 75%;
+}
 
-/*.localePanel {*/
-/*color: gray;*/
-/*font-size: 75%;*/
-/*}*/
-
-/*.userinfo {*/
-/*font-size: 75%;*/
-/*color: gray;*/
-/*}*/
-
-/*.navigation {*/
-/*width: 20%;*/
-/*vertical-align: top;*/
-/*padding-left: 10px;*/
-/*padding-top: 10px;*/
-/*position: fixed;*/
-/*}*/
-
-/*.navitems {*/
-
-/*}*/
-
-/*.navitem {*/
-/*width: 150px;*/
-/*height: 60px;*/
-/*border: none;*/
-/*border-collapse: collapse;*/
-/*}*/
-
-/*.content {*/
-/*position: relative;*/
-/*width: 75%;*/
-/*}*/
+.userinfo {
+    font-size: 75%;
+    color: gray;
+}
