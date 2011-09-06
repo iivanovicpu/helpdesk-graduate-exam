@@ -80,3 +80,19 @@ table {
     font-size: 75%;
     color: gray;
 }
+
+tr.odd {
+    background-color: #ccccff;
+}
+
+tr.even {
+    background-color: #ccffcc
+}
+
+tr.navigation {
+    background-color: #ffcc33
+}
+
+tr.headers {
+    background-color: #ffccff
+}

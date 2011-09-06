@@ -29,7 +29,7 @@ public class PrijavePage extends AuthenticatedPage {
         wmc = new WebMarkupContainer("listPrijavaContainer");
 
         IColumn[] columns = {
-                new PropertyColumn(new Model("ID"), "priid"),
+//                new PropertyColumn(new Model("ID"), "priid"),
 //                new AbstractColumn(new Model("First name")) {
 //                    public void populateItem(
 //                            Item cellItem, String componentId, IModel rowModel) {
@@ -42,12 +42,12 @@ public class PrijavePage extends AuthenticatedPage {
                 new PropertyColumn(new Model("Aplikacija"), "aplikacija", "aplikacija"),
                 new PropertyColumn(new Model("Opis"), "opis", "opis"),
                 new PropertyColumn(new Model("Napomena"), "napomena", "napomena"),
-//                new AbstractColumn(new Model("Delete")) {
-//                    public void populateItem(Item cellItem, String componentId, IModel rowModel) {
-//                        int entryId = ((PhoneBookEntry) rowModel.getObject()).getId();
-//                        cellItem.add(new DeleteEntryPanel(componentId, entryId));
-//                    }
-//                }
+                new AbstractColumn(new Model("edit")) {
+                    public void populateItem(Item cellItem, String componentId, IModel rowModel) {
+                        long entryId = ((Prijava) rowModel.getObject()).getPriid();
+                        cellItem.add(new EditPrijavaPanel(componentId, entryId));
+                    }
+                }
         };
         SortableDataProvider provider = new SortableDataProvider() {
             public int size() {
@@ -67,8 +67,8 @@ public class PrijavePage extends AuthenticatedPage {
 //        DefaultDataTable dataTable = new DefaultDataTable("entries", columns, provider.get(), 3);
         /* za custom tablicu ne može se koristiti DefaultDataTable klasa */
         DataTable dataTable = new DataTable("entries", columns, provider, 3) {
-            protected Item newRowItem(String id, int index, IModel model) {
-                return new OddEvenItem(id, index, model);
+            protected Item newRowItem(String prirbr, int index, IModel model) {
+                return new OddEvenItem(prirbr, index, model);
             }
         };
         dataTable.addTopToolbar(new HeadersToolbar(dataTable, provider));
