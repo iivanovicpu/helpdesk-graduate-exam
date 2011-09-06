@@ -16,5 +16,4 @@ public class LogoutLink extends BookmarkablePageLink {
         super(id, pageClass);
     }
 
-
 }

@@ -2,20 +2,13 @@ package hr.veleri.pages;
 
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.DropDownChoice;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.panel.Fragment;
-import org.apache.wicket.model.PropertyModel;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * User: iivanovic
@@ -42,7 +35,47 @@ public class AuthenticatedPage extends WebPage {
 
         initLoginInfo();
 
-        addNavigation();
+        if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
+            addNavigation();
+        if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ZAPOSLENIK))
+            addZaposlenikNavigation();
+        if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.KLIJENT))
+            addKlijentNavigation();
+    }
+
+    private void addKlijentNavigation() {
+        setNavigation(new KlijentNavigation("navigation") {
+            public Component getContent(String id) {
+                return contentFragment;
+            }
+
+            public Component getSubject(String id) {
+                return subjectFragment;
+            }
+
+            public Component getUserInfo(String id) {
+                return loginInfoFragment;
+            }
+        });
+        add(navigation);
+
+    }
+
+    private void addZaposlenikNavigation() {
+        setNavigation(new ZaposlenikNavigation("navigation") {
+            public Component getContent(String id) {
+                return contentFragment;
+            }
+
+            public Component getSubject(String id) {
+                return subjectFragment;
+            }
+
+            public Component getUserInfo(String id) {
+                return loginInfoFragment;
+            }
+        });
+        add(navigation);
     }
 
     private void initLoginInfo() {
@@ -54,18 +87,15 @@ public class AuthenticatedPage extends WebPage {
     }
 
     private void addNavigation() {
-        setNavigation(new Navigation("navigation") {
-            @Override
+        setNavigation(new AdminNavigation("navigation") {
             public Component getContent(String id) {
                 return contentFragment;
             }
 
-            @Override
             public Component getSubject(String id) {
                 return subjectFragment;
             }
 
-            @Override
             public Component getUserInfo(String id) {
                 return loginInfoFragment;
             }
