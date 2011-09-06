@@ -1,7 +1,9 @@
 package hr.veleri.pages;
 
+import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -25,6 +27,10 @@ public class KorisniciPage extends AuthenticatedPage {
 
     public KorisniciPage(final PageParameters pp) {
         init(KorisniciPage.this);
+
+        /* redirekcija ako nije administrator logiran */
+        if(!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
+            setResponsePage(UnouthorisedContentPage.class);
 
         wmc = new WebMarkupContainer("listRadContainer");
 
