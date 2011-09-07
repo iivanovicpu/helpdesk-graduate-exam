@@ -15,15 +15,31 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 <body>
-
 <wicket:fragment wicket:id="header">HelpDesk v1.0
-    <wicket:message key="unouthorisedContentPage.title">Unouthorised page</wicket:message>
+    <wicket:message key="prijavaEditPage.title">Prijava</wicket:message>
 </wicket:fragment>
 
 <span wicket:id="navigation"/>
 
 <wicket:fragment wicket:id="content">
-    <h2><wicket:message key="unouthorisedContentPage.message">unouthorised</wicket:message></h2>
+    <div wicket:id="prijavaContainer">
+        <form wicket:id="prijavaForm">
+            <ul>
+                <li>
+                    <wicket:message key="prijavaEditPage.prirbr">rbr</wicket:message>
+                    <span wicket:id="prirbr"/>
+                </li>
+                <li>
+                    <wicket:message key="prijavaEditPage.pridatum">datum</wicket:message>
+                    <span wicket:id="pridatum"/>
+                </li>
+                <li>
+                    <wicket:message key="prijavaEditPage.aplikacija">aplikacija</wicket:message>
+                    <select wicket:id="aplikacije"></select>
+                </li>
+            </ul>
+        </form>
+    </div>
 </wicket:fragment>
 
 <wicket:fragment wicket:id="userinfo">
@@ -31,5 +47,6 @@
     <wicket:message key="logout">Odjavi se</wicket:message>
 </a>
 </wicket:fragment>
+
 </body>
 </html>

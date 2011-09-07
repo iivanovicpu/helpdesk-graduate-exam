@@ -86,7 +86,7 @@ tr.odd {
 }
 
 tr.even {
-    background-color: #ccffcc
+    background-color: #ffffff
 }
 
 tr.navigation {
@@ -94,5 +94,10 @@ tr.navigation {
 }
 
 tr.headers {
-    background-color: #ffccff
+    background-color: #9999ff;
+}
+
+tr.headers a {
+    color: #ccccff;
+    text-decoration: none;
 }

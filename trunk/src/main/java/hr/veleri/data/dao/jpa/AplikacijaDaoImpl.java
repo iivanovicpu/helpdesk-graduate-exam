@@ -27,7 +27,7 @@ public class AplikacijaDaoImpl extends AbstractDaoJPAImpl<Aplikacija> implements
     public List<Aplikacija> findAll() {
         return getJpaTemplate().execute(new JpaCallback<List<Aplikacija>>() {
             public List<Aplikacija> doInJpa(EntityManager em) throws PersistenceException {
-                TypedQuery<Aplikacija> query = em.createQuery("select k from Klijent k", Aplikacija.class);
+                TypedQuery<Aplikacija> query = em.createQuery("select a from Aplikacija a", Aplikacija.class);
                 return query.getResultList();
             }
         });

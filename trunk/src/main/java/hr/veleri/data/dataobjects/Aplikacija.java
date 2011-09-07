@@ -57,18 +57,23 @@ public class Aplikacija extends DomainObject{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Aplikacija)) return false;
 
-        Aplikacija klijent = (Aplikacija) o;
+        Aplikacija that = (Aplikacija) o;
 
-        if (!sifra.equals(klijent.sifra)) return false;
+        if (id != that.id) return false;
+        if (!naziv.equals(that.naziv)) return false;
+        if (!sifra.equals(that.sifra)) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return sifra.hashCode();
+        int result = id;
+        result = 31 * result + sifra.hashCode();
+        result = 31 * result + naziv.hashCode();
+        return result;
     }
 
     @Override

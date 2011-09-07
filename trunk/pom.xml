@@ -284,7 +284,7 @@
 
     <properties>
         <slf4j.version>1.5.11</slf4j.version>
-        <wicket.version>1.4.12</wicket.version>
+        <wicket.version>1.4.18</wicket.version>
         <jetty.version>6.1.25</jetty.version>
         <org.springframework.version>3.0.4.RELEASE</org.springframework.version>
         <jettyVersion>7.3.1.v20110307</jettyVersion>
