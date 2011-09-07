@@ -98,4 +98,15 @@ public class PrijaveImp extends AbstractDaoJPAImpl<Prijava> implements PrijaveDa
         return sortedEntries.subList(first, first + count);
     }
 
+    @Transactional
+    public Prijava findById(final long prijavaId) {
+        return getJpaTemplate().execute(new JpaCallback<Prijava>() {
+            public Prijava doInJpa(EntityManager em) throws PersistenceException {
+                TypedQuery<Prijava> query = em.createQuery("select p from Prijava p where priid = ?1", Prijava.class);
+                query.setParameter(1, prijavaId);
+                return query.getSingleResult();
+            }
+        });
+    }
+
 }

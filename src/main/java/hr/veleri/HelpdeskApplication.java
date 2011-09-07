@@ -9,11 +9,6 @@ import org.apache.wicket.authorization.strategies.page.SimplePageAuthorizationSt
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
-/**
- * Application object for your web application. If you want to run this application without deploying, run the Start class.
- *
- * @author Richard Wilkinson - richard.wilkinson@jweekend.com
- */
 public class HelpdeskApplication extends WebApplication {
 
     /**
@@ -39,6 +34,7 @@ public class HelpdeskApplication extends WebApplication {
         mountBookmarkablePage("korisnici", KorisniciPage.class);
         mountBookmarkablePage("login", Login.class);
         mountBookmarkablePage("prijave", PrijavePage.class);
+        mountBookmarkablePage("prijava", PrijavaEditPage.class);
         mountBookmarkablePage("home", HomePage.class);
         getMarkupSettings().setDefaultMarkupEncoding("UTF8");
         addComponentInstantiationListener(getSpringInjector());

@@ -8,4 +8,6 @@ import java.util.List;
 public interface PrijaveDao extends Dao<Prijava> {
 
     List selectEntries(int first, int count, SortParam sortParam);
+
+    Prijava findById(long prijavaId);
 }
