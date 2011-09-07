@@ -73,10 +73,7 @@ public class Korisnik  extends DomainObject{
 
     @Override
     public String toString() {
-        return "Korisnik{" +
-                "radid=" + id +
-                ", ime='" + ime + '\'' +
-                '}';
+        return ime + " " + prezime;
     }
 
     public String getUsername() {
