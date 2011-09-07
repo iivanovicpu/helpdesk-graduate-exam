@@ -1,6 +1,9 @@
 package hr.veleri.data.dataobjects;
 
+import hr.veleri.util.UtilitiesDate;
+
 import javax.persistence.*;
+import java.text.DateFormat;
 import java.util.Date;
 
 /**
@@ -70,12 +73,20 @@ public class Prijava extends DomainObject {
         return pridatum;
     }
 
+    public String getPridatumFormatted() {
+        return UtilitiesDate.format(pridatum);
+    }
+
     public void setPridatum(Date pridatum) {
         this.pridatum = pridatum;
     }
 
     public Date getPridatumzap() {
         return pridatumzap;
+    }
+
+    public String getPridatumzapFormatted() {
+        return UtilitiesDate.format(pridatumzap);
     }
 
     public void setPridatumzap(Date pridatumzap) {

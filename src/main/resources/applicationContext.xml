@@ -42,6 +42,10 @@
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
+    <bean id="intervencijeDao" class="hr.veleri.data.dao.jpa.IntervencijeDaoImp">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
     <bean id="korisnikDao" class="hr.veleri.data.dao.jpa.KorisnikDaoImp">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>

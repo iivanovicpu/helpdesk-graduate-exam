@@ -25,6 +25,8 @@ public class InitData {
 
     private PrijaveDao prijaveDao;
 
+    private IntervencijeDao intervencijeDao;
+
 
     public void setKlijentDao(KlijentDao klijentDao) {
         this.klijentDao = klijentDao;
@@ -48,6 +50,10 @@ public class InitData {
 
     public void setPrijaveDao(PrijaveDao prijaveDao) {
         this.prijaveDao = prijaveDao;
+    }
+
+    public void setIntervencijeDao(IntervencijeDao intervencijeDao) {
+        this.intervencijeDao = intervencijeDao;
     }
 
     public void init() {
@@ -85,9 +91,10 @@ public class InitData {
         Aplikacija pro = aplikacijaDao.save(new Aplikacija("Prodaja smještajnih kapaciteta", "PRO"));
         Aplikacija gas = aplikacijaDao.save(new Aplikacija("Gastronomija", "GAS"));
         Aplikacija mje = aplikacijaDao.save(new Aplikacija("Mjenjačnica", "MJE3"));
+        Aplikacija irs = aplikacijaDao.save(new Aplikacija("Internet Rezervacijski Sustav", "IRS"));
 
         // korisnici zaposlenici: ppauro, iivanovic - zaduzeni za vise aplikacija
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, iivanovic));
+        KorisnikZaposlenik iivanovicZap = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, iivanovic));
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptz2, iivanovic));
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(pos, iivanovic));
         korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, iivanovic));
@@ -107,11 +114,18 @@ public class InitData {
 
         // prijave:
         Prijava p1 = new Prijava(1,ptw,"","Kako napraviti aktivaciju korisničkog računa", UtilitiesDate.getDate(2011,5,25),UtilitiesDate.getDate(2011,5,25),korisnikKlijent);
+        Intervencija i1 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25),"Korisniku mailom dostavljene upute za operatere u TZ", p1,iivanovicZap));
         Prijava p2 = new Prijava(2,ptz2,"","Prilikom prihvata prijava javlja se greška nedefinirane zemlje državljanstva (XXK)", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent1);
         Prijava p3 = new Prijava(3,pos,"Veza: recepcijsko poslovanje","Greška kod naplate računa na račun gosta", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent2);
+        Prijava p4 = new Prijava(4,pro,"nedavno zamijenjen server","Događa se dupliranje transakcija zbog sporog upita prema udaljenim serverima", UtilitiesDate.getDate(2011,7,19),UtilitiesDate.getDate(2011,7,19),korisnikKlijent);
+        Prijava p5 = new Prijava(5,mje,"HNB: izmjena uvjeta za certificiranje","Ugraditi izmjene prema zadnjoj specifikaciji HNB-a", UtilitiesDate.getDate(2011,3,25),UtilitiesDate.getDate(2011,3,25),korisnikKlijent2);
+        Prijava p6 = new Prijava(6,irs,"T-ComPayWay, nova verzija","Uskladiti sustav naplate s najnovijim PayWay sučeljem", UtilitiesDate.getDate(2011,4,12),UtilitiesDate.getDate(2011,4,14),korisnikKlijent);
         prijaveDao.save(p1);
         prijaveDao.save(p2);
         prijaveDao.save(p3);
+        prijaveDao.save(p4);
+        prijaveDao.save(p5);
+        prijaveDao.save(p6);
 
     }
 

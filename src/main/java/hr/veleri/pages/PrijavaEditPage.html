@@ -24,21 +24,38 @@
 <wicket:fragment wicket:id="content">
     <div wicket:id="prijavaContainer">
         <form wicket:id="prijavaForm">
-            <ul>
-                <li>
-                    <wicket:message key="prijavaEditPage.prirbr">rbr</wicket:message>
-                    <span wicket:id="prirbr"/>
-                </li>
-                <li>
-                    <wicket:message key="prijavaEditPage.pridatum">datum</wicket:message>
-                    <span wicket:id="pridatum"/>
-                </li>
-                <li>
-                    <wicket:message key="prijavaEditPage.aplikacija">aplikacija</wicket:message>
-                    <select wicket:id="aplikacije"></select>
-                </li>
-            </ul>
+            <table class="form">
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.prirbr">rbr</wicket:message></td>
+                    <td><span wicket:id="prirbr"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.pridatum">datum</wicket:message></td>
+                    <td><span  wicket:id="pridatum"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.prijavio">prijavio</wicket:message></td>
+                    <td><span  wicket:id="prijavio"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.aplikacija">aplikacija</wicket:message></td>
+                    <td><span  wicket:id="aplikacija"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.pridatumzap">datumzap</wicket:message></td>
+                    <td><span  wicket:id="pridatumzap"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.opis">opis</wicket:message></td>
+                    <td><span  wicket:id="opis"/></td>
+                </tr>
+                <tr>
+                    <td><wicket:message key="prijavaEditPage.napomena">napomena</wicket:message></td>
+                    <td><span  wicket:id="napomena"/></td>
+                </tr>
+            </table>
         </form>
+        <table border="1" wicket:id="entries"></table>
     </div>
 </wicket:fragment>
 
