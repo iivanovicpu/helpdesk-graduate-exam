@@ -17,4 +17,7 @@ public interface IntervencijeDao extends Dao<Intervencija> {
 
     @Transactional
     int countAllByPrijava(Prijava prijava);
+
+    @Transactional
+    Intervencija findById(long intid);
 }

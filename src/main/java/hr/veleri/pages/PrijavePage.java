@@ -3,6 +3,9 @@ package hr.veleri.pages;
 import hr.veleri.data.dao.interfaces.PrijaveDao;
 import hr.veleri.data.dataobjects.Prijava;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.extensions.breadcrumb.BreadCrumbBar;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanel;
+import org.apache.wicket.extensions.breadcrumb.panel.BreadCrumbPanelLink;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
@@ -12,6 +15,7 @@ import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import sun.plugin.javascript.navig.Link;
 
 import java.util.Iterator;
 
@@ -27,7 +31,6 @@ public class PrijavePage extends AuthenticatedPage {
 
     public PrijavePage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listPrijavaContainer");
-
         IColumn[] columns = {
 //                new PropertyColumn(new Model("ID"), "priid"),
 //                new AbstractColumn(new Model("First name")) {
@@ -64,8 +67,6 @@ public class PrijavePage extends AuthenticatedPage {
                 return prijaveDao.selectEntries(first, count, sortParam).iterator();
             }
         };
-//        DefaultDataTable dataTable = new DefaultDataTable("entries", columns, provider.get(), 3);
-        /* za custom tablicu ne može se koristiti DefaultDataTable klasa */
         DataTable dataTable = new DataTable("entries", columns, provider, 3) {
             protected Item newRowItem(String prirbr, int index, IModel model) {
                 return new OddEvenItem(prirbr, index, model);
@@ -74,11 +75,6 @@ public class PrijavePage extends AuthenticatedPage {
         dataTable.addTopToolbar(new HeadersToolbar(dataTable, provider));
         dataTable.addBottomToolbar(new NavigationToolbar(dataTable){
         });
-
-        /* ajax paginacija  -  */
-//        dataTable.setOutputMarkupId(true);
-//        AjaxNavigationToolbar navigationToolbar = new AjaxNavigationToolbar(dataTable);
-//        dataTable.addBottomToolbar(navigationToolbar);
 
         wmc.add(dataTable);
         init(PrijavePage.this);

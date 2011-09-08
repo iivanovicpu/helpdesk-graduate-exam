@@ -65,11 +65,11 @@ public class PrijavaEditPage extends AuthenticatedPage {
                 new PropertyColumn<Intervencija>(new Model<String>("Osoba"), "zaposlenik", "zaposlenik"),
                 new PropertyColumn<Intervencija>(new Model<String>("Datum"), "datum", "datumFormatted"),
                 new PropertyColumn<Intervencija>(new Model<String>("Opis"), "opis", "opis"),
+                new PropertyColumn<Intervencija>(new Model<String>("Trajanje (minute"), "trajanje", "minutaTrajanja"),
                 new AbstractColumn<Intervencija>(new Model<String>("edit")) {
                     public void populateItem(Item cellItem, String componentId, IModel rowModel) {
                         long entryId = ((Intervencija) rowModel.getObject()).getId();
-                        /* todo: novi panel za edit button */
-                        cellItem.add(new EditPrijavaPanel(componentId, entryId));
+                        cellItem.add(new EditRowPanel(componentId, entryId, new IntervencijaEditPage(entryId)));
                     }
                 }
         };
