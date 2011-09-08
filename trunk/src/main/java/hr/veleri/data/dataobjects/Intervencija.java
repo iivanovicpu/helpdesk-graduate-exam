@@ -75,4 +75,12 @@ public class Intervencija  extends DomainObject{
     public int getMinutaTrajanja() {
         return minutaTrajanja;
     }
+
+    public void setPrijava(Prijava prijava) {
+        this.prijava = prijava;
+    }
+
+    public void setZaposlenik(KorisnikZaposlenik korisnikZaposlenik) {
+        this.zaposlenik = korisnikZaposlenik;
+    }
 }
