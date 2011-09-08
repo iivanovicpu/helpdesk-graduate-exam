@@ -1,5 +1,7 @@
 package hr.veleri.data.dataobjects;
 
+import hr.veleri.util.UtilitiesDate;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -45,5 +47,17 @@ public class Intervencija  extends DomainObject{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Date getDatum() {
+        return datum;
+    }
+
+    public String getDatumFormatted() {
+        return UtilitiesDate.formatDateTime(datum);
+    }
+
+    public KorisnikZaposlenik getZaposlenik() {
+        return zaposlenik;
     }
 }

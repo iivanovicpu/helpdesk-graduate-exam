@@ -74,7 +74,7 @@ public class Prijava extends DomainObject {
     }
 
     public String getPridatumFormatted() {
-        return UtilitiesDate.format(pridatum);
+        return UtilitiesDate.formatDateTime(pridatum);
     }
 
     public void setPridatum(Date pridatum) {
@@ -86,7 +86,7 @@ public class Prijava extends DomainObject {
     }
 
     public String getPridatumzapFormatted() {
-        return UtilitiesDate.format(pridatumzap);
+        return UtilitiesDate.formatDateTime(pridatumzap);
     }
 
     public void setPridatumzap(Date pridatumzap) {

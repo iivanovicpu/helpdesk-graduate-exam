@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface IntervencijeDao extends Dao<Intervencija> {
 
-    List selectEntries(int first, int count, SortParam sortParam, Prijava prijava);
+    List<Intervencija> selectEntries(int first, int count, SortParam sortParam, Prijava prijava);
 
     @Transactional
     List<Intervencija> findAllByPrijava(Prijava prijava);

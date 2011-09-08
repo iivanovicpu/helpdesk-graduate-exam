@@ -3,6 +3,7 @@ package hr.veleri.data.dao.jpa;
 import hr.veleri.data.dao.interfaces.IntervencijeDao;
 import hr.veleri.data.dataobjects.Intervencija;
 import hr.veleri.data.dataobjects.Klijent;
+import hr.veleri.data.dataobjects.KorisnikZaposlenik;
 import hr.veleri.data.dataobjects.Prijava;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.springframework.orm.jpa.JpaCallback;
@@ -13,6 +14,7 @@ import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class IntervencijeDaoImp extends AbstractDaoJPAImpl<Intervencija> implements IntervencijeDao {
@@ -65,25 +67,25 @@ public class IntervencijeDaoImp extends AbstractDaoJPAImpl<Intervencija> impleme
 
     }
 
-    public List selectEntries(int first, int count, final SortParam sortParam, Prijava prijava) {
+    public List<Intervencija> selectEntries(int first, int count, final SortParam sortParam, Prijava prijava) {
         List sortedEntries = findAllByPrijava(prijava);
         if (sortParam != null) {
-            if (sortParam.getProperty().equals("sifra")) {
+            if (sortParam.getProperty().equals("zaposlenik")) {
                 Collections.sort(sortedEntries, new Comparator() {
                     public int compare(Object arg0, Object arg1) {
-                        Klijent entry1 = (Klijent) arg0;
-                        Klijent entry2 = (Klijent) arg1;
-                        int result = String.valueOf(entry1.getSifra()).compareTo(String.valueOf(entry2.getSifra()));
+                        Intervencija entry1 = (Intervencija) arg0;
+                        Intervencija entry2 = (Intervencija) arg1;
+                        int result = String.valueOf(entry1.getZaposlenik().getKorisnik().getPrezime()).compareTo(String.valueOf(entry2.getZaposlenik().getKorisnik().getPrezime()));
                         return sortParam.isAscending() ? result : -result;
                     }
                 });
             }
-            if (sortParam.getProperty().equals("naziv")) {
+            if (sortParam.getProperty().equals("datum")) {
                 Collections.sort(sortedEntries, new Comparator() {
                     public int compare(Object arg0, Object arg1) {
-                        Klijent klijent1 = (Klijent) arg0;
-                        Klijent klijent2 = (Klijent) arg1;
-                        int result = klijent1.getNaziv().compareTo(klijent2.getNaziv());
+                        Intervencija entry1 = (Intervencija) arg0;
+                        Intervencija entry2 = (Intervencija) arg1;
+                        int result = entry1.getDatum().compareTo(entry2.getDatum());
                         return sortParam.isAscending() ? result : -result;
                     }
                 });
