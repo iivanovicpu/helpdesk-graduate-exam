@@ -11,6 +11,7 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.Form;
@@ -44,7 +45,11 @@ public class PrijavaEditPage extends AuthenticatedPage {
         wmc = new WebMarkupContainer("prijavaContainer");
 
         Model<Prijava> prijavaModel = new Model<Prijava>(prijava);
-        Form form = new Form<Prijava>("prijavaForm", prijavaModel);
+        Form<Prijava> form = new Form<Prijava>("prijavaForm", prijavaModel){
+            protected void onSubmit() {
+                setResponsePage(new PrijavePage());
+            }
+        };
         Label prirbr = new Label("prirbr", new PropertyModel<Prijava>(prijava, "prirbr"));
         Label pridatum = new Label("pridatum", new PropertyModel<Prijava>(prijava, "pridatumFormatted"));
         Label pridatumzap = new Label("pridatumzap", new PropertyModel<Prijava>(prijava, "pridatumzapFormatted"));
@@ -57,6 +62,17 @@ public class PrijavaEditPage extends AuthenticatedPage {
 //        ChoiceRenderer<Aplikacija> choiceRendererAplikacija = new ChoiceRenderer<Aplikacija>("sifra");
 //        PropertyModel<Aplikacija> aplikacijaPropertyModel = new PropertyModel<Aplikacija>(prijavaModel.getObject(), "aplikacija");
 //        DropDownChoice<Aplikacija> aplikacije = new DropDownChoice<Aplikacija>("aplikacije", aplikacijaPropertyModel, aplikacijaDao.findAll(), choiceRendererAplikacija);
+
+        Button dodajIntervenciju = new Button("dodajint") {
+            public void onSubmit() {
+                System.out.println("nova intervencija");
+                setResponsePage(new DodajIntervencijuPage());
+            }
+        };
+        dodajIntervenciju.setDefaultFormProcessing(false);
+
+        form.add(dodajIntervenciju);
+
 
         form.add(pridatum, prirbr, aplikacija, prijavio, pridatumzap, opis, napomena);
 
