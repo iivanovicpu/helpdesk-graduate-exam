@@ -66,7 +66,7 @@ public class PrijavaEditPage extends AuthenticatedPage {
         Button dodajIntervenciju = new Button("dodajint") {
             public void onSubmit() {
                 System.out.println("nova intervencija");
-                setResponsePage(new DodajIntervencijuPage());
+                setResponsePage(new DodajIntervencijuPage(prijava));
             }
         };
         dodajIntervenciju.setDefaultFormProcessing(false);
