@@ -94,38 +94,47 @@ public class InitData {
         Aplikacija irs = aplikacijaDao.save(new Aplikacija("Internet Rezervacijski Sustav", "IRS"));
 
         // korisnici zaposlenici: ppauro, iivanovic - zaduzeni za vise aplikacija
-        KorisnikZaposlenik iivanovicZap = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, iivanovic));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptz2, iivanovic));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(pos, iivanovic));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, iivanovic));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(mje, ppauro));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(rec, ppauro));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(gas, ppauro));
-        korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
+        KorisnikZaposlenik iivanovicPtw = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, iivanovic));
+        KorisnikZaposlenik iivanovicPtz2 = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptz2, iivanovic));
+        KorisnikZaposlenik iivanovicPos = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pos, iivanovic));
+        KorisnikZaposlenik iivanovicPro = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, iivanovic));
+        KorisnikZaposlenik ppauroMje =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(mje, ppauro));
+        KorisnikZaposlenik ppauroRec = korisnikZaposlenikDao.save(new KorisnikZaposlenik(rec, ppauro));
+        KorisnikZaposlenik ppauroGas = korisnikZaposlenikDao.save(new KorisnikZaposlenik(gas, ppauro));
+        KorisnikZaposlenik ppauroPro = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
+        KorisnikZaposlenik ppauroIrs = korisnikZaposlenikDao.save(new KorisnikZaposlenik(irs, ppauro));
 
         // korisnici klijenti: tcosic, vjuhas - korisnici aplikacija
-        KorisnikKlijent korisnikKlijent = new KorisnikKlijent(pl, tcosic);
-        KorisnikKlijent korisnikKlijent1 = new KorisnikKlijent(ss, vjuhas);
-        KorisnikKlijent korisnikKlijent2 = new KorisnikKlijent(imperial, dostojic);
-
-        korisnikKlijentDao.save(korisnikKlijent);
-        korisnikKlijentDao.save(korisnikKlijent1);
-        korisnikKlijentDao.save(korisnikKlijent2);
+        KorisnikKlijent korisnikKlijent = korisnikKlijentDao.save(new KorisnikKlijent(pl, tcosic));
+        KorisnikKlijent korisnikKlijent1 = korisnikKlijentDao.save(new KorisnikKlijent(ss, vjuhas));
+        KorisnikKlijent korisnikKlijent2 = korisnikKlijentDao.save(new KorisnikKlijent(imperial, dostojic));
 
         // prijave:
-        Prijava p1 = new Prijava(1,ptw,"","Kako napraviti aktivaciju korisničkog računa", UtilitiesDate.getDate(2011,5,25),UtilitiesDate.getDate(2011,5,25),korisnikKlijent);
-        Intervencija i1 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25),"Korisniku mailom dostavljene upute za operatere u TZ", p1,iivanovicZap));
-        Prijava p2 = new Prijava(2,ptz2,"","Prilikom prihvata prijava javlja se greška nedefinirane zemlje državljanstva (XXK)", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent1);
-        Prijava p3 = new Prijava(3,pos,"Veza: recepcijsko poslovanje","Greška kod naplate računa na račun gosta", UtilitiesDate.getDate(2011,5,26),UtilitiesDate.getDate(2011,5,26),korisnikKlijent2);
-        Prijava p4 = new Prijava(4,pro,"nedavno zamijenjen server","Događa se dupliranje transakcija zbog sporog upita prema udaljenim serverima", UtilitiesDate.getDate(2011,7,19),UtilitiesDate.getDate(2011,7,19),korisnikKlijent);
-        Prijava p5 = new Prijava(5,mje,"HNB: izmjena uvjeta za certificiranje","Ugraditi izmjene prema zadnjoj specifikaciji HNB-a", UtilitiesDate.getDate(2011,3,25),UtilitiesDate.getDate(2011,3,25),korisnikKlijent2);
-        Prijava p6 = new Prijava(6,irs,"T-ComPayWay, nova verzija","Uskladiti sustav naplate s najnovijim PayWay sučeljem", UtilitiesDate.getDate(2011,4,12),UtilitiesDate.getDate(2011,4,14),korisnikKlijent);
-        prijaveDao.save(p1);
-        prijaveDao.save(p2);
-        prijaveDao.save(p3);
-        prijaveDao.save(p4);
-        prijaveDao.save(p5);
-        prijaveDao.save(p6);
+        Prijava p1 = prijaveDao.save(new Prijava(1,ptw,"","Kako napraviti aktivaciju korisničkog računa", UtilitiesDate.getDate(2011,5,25,8,0),UtilitiesDate.getDate(2011,5,25,8,5),korisnikKlijent));
+        Prijava p2 = prijaveDao.save(new Prijava(2,ptz2,"","Prilikom prihvata prijava javlja se greška nedefinirane zemlje državljanstva (XXK)", UtilitiesDate.getDate(2011,5,26,8,1),UtilitiesDate.getDate(2011,5,26,8,5),korisnikKlijent1));
+        Prijava p3 = prijaveDao.save(new Prijava(3,pos,"Veza: recepcijsko poslovanje","Greška kod naplate računa na račun gosta", UtilitiesDate.getDate(2011,5,26,7,22),UtilitiesDate.getDate(2011,5,26,8,5),korisnikKlijent2));
+        Prijava p4 = prijaveDao.save(new Prijava(4,pro,"nedavno zamijenjen server","Događa se dupliranje transakcija zbog sporog upita prema udaljenim serverima", UtilitiesDate.getDate(2011,7,19,7,55),UtilitiesDate.getDate(2011,7,19,8,3),korisnikKlijent));
+        Prijava p5 = prijaveDao.save(new Prijava(5,mje,"HNB: izmjena uvjeta za certificiranje","Ugraditi izmjene prema zadnjoj specifikaciji HNB-a", UtilitiesDate.getDate(2011,3,25,7,0),UtilitiesDate.getDate(2011,3,25,7,11),korisnikKlijent2));
+        Prijava p6 = prijaveDao.save(new Prijava(6,irs,"T-ComPayWay, nova verzija","Uskladiti sustav naplate s najnovijim PayWay sučeljem", UtilitiesDate.getDate(2011,4,12,3,1),UtilitiesDate.getDate(2011,4,14,8,10),korisnikKlijent));
+
+        Intervencija i1 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,14,3),"Korisniku mailom dostavljene upute za operatere u TZ", p1,iivanovicPtw));
+
+        Intervencija i2 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,26,8,9),"Ažuriranje šifarnika zemalja. XXK je šifra koja se privremeno koristi za zemlju Kosovo", p2,iivanovicPtz2));
+        Intervencija i3 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,11,30),"Testiranje prihvata datoteka koje sadrže šifru zemlje XXK. Prijave se ispravno upisuju", p2,iivanovicPtw));
+
+        Intervencija i4 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,12,30),"Provjera postavki konekcije na bazu na klijentskom računalu. Ažurirana datoteka TNSNAMES.ORA, s postavkama novog oracle poslužitelja", p3,iivanovicPos));
+        Intervencija i5 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,13,22),"Testiranje naplate na račun gosta. Veza s recepcijskim poslovanjem je ispravna", p3,iivanovicPos));
+
+        Intervencija i6 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,7,22,14,2),"Optimizarana procedura REZ. Izmjena aplicirana na korisnikovoj bazi podataka", p4,iivanovicPro));
+        Intervencija i7 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,9,54),"Provjera logova na modulu PRO. Prema logovima vrijeme odziva je optimalno", p4,ppauroPro));
+
+        Intervencija i8 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,3,26,11,15),"Napravljene izmjene prema specifikaciji HNB-a", p5,ppauroMje));
+        Intervencija i9 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,12,22),"Dostava aplikacije na certificiranje", p5,ppauroMje));
+
+        Intervencija i10 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,13,55),"Sustav naplate usklađen sa novom verzijom T-ComPayWay payment gateway-a", p6,ppauroIrs));
+        Intervencija i11 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,16,12,5),"Omogućeno parametarsko korištenje vlastite forme za naplatu (SOAP klijent)", p6,ppauroIrs));
+        Intervencija i12 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,14,10),"Implementacija SSL certifikata (Thawte) na korisnikovom Tomcat poslužitelju - preduvjet za korištenje SOAP servisa za naplatu", p6,ppauroIrs));
+        Intervencija i13 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,17,35),"Ažuriranje uputa za parametrizaciju i korištenje novih mogućnosti sustava naplate. Upute dostavljene korisniku.", p6,ppauroIrs));
 
     }
 

@@ -62,10 +62,10 @@ public class PrijavaEditPage extends AuthenticatedPage {
 
         /* tablica intervencija */
         IColumn[] columns = {
-                new PropertyColumn(new Model("Osoba"), "zaposlenik", "zaposlenik"),
-                new PropertyColumn(new Model("Datum"), "datum", "datum"),
-                new PropertyColumn(new Model("Opis"), "opis", "opis"),
-                new AbstractColumn(new Model("edit")) {
+                new PropertyColumn<Intervencija>(new Model<String>("Osoba"), "zaposlenik", "zaposlenik"),
+                new PropertyColumn<Intervencija>(new Model<String>("Datum"), "datum", "datumFormatted"),
+                new PropertyColumn<Intervencija>(new Model<String>("Opis"), "opis", "opis"),
+                new AbstractColumn<Intervencija>(new Model<String>("edit")) {
                     public void populateItem(Item cellItem, String componentId, IModel rowModel) {
                         long entryId = ((Intervencija) rowModel.getObject()).getId();
                         /* todo: novi panel za edit button */
@@ -73,27 +73,26 @@ public class PrijavaEditPage extends AuthenticatedPage {
                     }
                 }
         };
-        SortableDataProvider provider = new SortableDataProvider() {
+        SortableDataProvider<Intervencija> provider = new SortableDataProvider<Intervencija>() {
             public int size() {
                 return intervencijeDao.countAllByPrijava(prijava);
             }
 
-            public IModel model(Object object) {
-                Intervencija entry = (Intervencija) object;
-                return new Model(entry);
+            public IModel<Intervencija> model(Intervencija intervencija) {
+                return new Model<Intervencija>(intervencija);
             }
 
-            public Iterator iterator(int first, int count) {
+            public Iterator<Intervencija> iterator(int first, int count) {
                 SortParam sortParam = getSort();
-                List list = intervencijeDao.selectEntries(first, count, sortParam, prijava);
+                List<Intervencija> list = intervencijeDao.selectEntries(first, count, sortParam, prijava);
                 return list != null ? list.iterator() : null;
             }
         };
 //        DefaultDataTable dataTable = new DefaultDataTable("entries", columns, provider.get(), 3);
         /* za custom tablicu ne može se koristiti DefaultDataTable klasa */
-        DataTable dataTable = new DataTable("entries", columns, provider, 3) {
-            protected Item newRowItem(String prirbr, int index, IModel model) {
-                return new OddEvenItem(prirbr, index, model);
+        DataTable<Intervencija> dataTable = new DataTable<Intervencija>("entries", columns, provider, 3) {
+            protected Item<Intervencija> newRowItem(String id, int index, IModel<Intervencija> model) {
+                return new OddEvenItem<Intervencija>(id, index, model);
             }
         };
         dataTable.addTopToolbar(new HeadersToolbar(dataTable, provider));
