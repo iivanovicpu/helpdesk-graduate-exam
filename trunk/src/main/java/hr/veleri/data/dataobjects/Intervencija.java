@@ -31,14 +31,17 @@ public class Intervencija  extends DomainObject{
 
     private String opis;
 
+    private int minutaTrajanja;
+
     public Intervencija() {
     }
 
-    public Intervencija(Date datum, String opis, Prijava prijava, KorisnikZaposlenik zaposlenik) {
+    public Intervencija(Date datum, String opis, Prijava prijava, KorisnikZaposlenik zaposlenik, int trajanje) {
         this.datum = datum;
         this.opis = opis;
         this.prijava = prijava;
         this.zaposlenik = zaposlenik;
+        this.minutaTrajanja = trajanje;
     }
 
     public long getId() {
@@ -59,5 +62,17 @@ public class Intervencija  extends DomainObject{
 
     public KorisnikZaposlenik getZaposlenik() {
         return zaposlenik;
+    }
+
+    public Prijava getPrijava() {
+        return prijava;
+    }
+
+    public String getOpis() {
+        return opis;
+    }
+
+    public int getMinutaTrajanja() {
+        return minutaTrajanja;
     }
 }

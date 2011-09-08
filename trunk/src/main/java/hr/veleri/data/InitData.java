@@ -117,24 +117,24 @@ public class InitData {
         Prijava p5 = prijaveDao.save(new Prijava(5,mje,"HNB: izmjena uvjeta za certificiranje","Ugraditi izmjene prema zadnjoj specifikaciji HNB-a", UtilitiesDate.getDate(2011,3,25,7,0),UtilitiesDate.getDate(2011,3,25,7,11),korisnikKlijent2));
         Prijava p6 = prijaveDao.save(new Prijava(6,irs,"T-ComPayWay, nova verzija","Uskladiti sustav naplate s najnovijim PayWay sučeljem", UtilitiesDate.getDate(2011,4,12,3,1),UtilitiesDate.getDate(2011,4,14,8,10),korisnikKlijent));
 
-        Intervencija i1 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,14,3),"Korisniku mailom dostavljene upute za operatere u TZ", p1,iivanovicPtw));
+        Intervencija i1 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,14,3),"Korisniku mailom dostavljene upute za operatere u TZ", p1,iivanovicPtw,5));
 
-        Intervencija i2 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,26,8,9),"Ažuriranje šifarnika zemalja. XXK je šifra koja se privremeno koristi za zemlju Kosovo", p2,iivanovicPtz2));
-        Intervencija i3 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,11,30),"Testiranje prihvata datoteka koje sadrže šifru zemlje XXK. Prijave se ispravno upisuju", p2,iivanovicPtw));
+        Intervencija i2 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,26,8,9),"Ažuriranje šifarnika zemalja. XXK je šifra koja se privremeno koristi za zemlju Kosovo", p2,iivanovicPtz2,10));
+        Intervencija i3 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,11,30),"Testiranje prihvata datoteka koje sadrže šifru zemlje XXK. Prijave se ispravno upisuju", p2,iivanovicPtw,5));
 
-        Intervencija i4 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,12,30),"Provjera postavki konekcije na bazu na klijentskom računalu. Ažurirana datoteka TNSNAMES.ORA, s postavkama novog oracle poslužitelja", p3,iivanovicPos));
-        Intervencija i5 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,13,22),"Testiranje naplate na račun gosta. Veza s recepcijskim poslovanjem je ispravna", p3,iivanovicPos));
+        Intervencija i4 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,12,30),"Provjera postavki konekcije na bazu na klijentskom računalu. Ažurirana datoteka TNSNAMES.ORA, s postavkama novog oracle poslužitelja", p3,iivanovicPos,25));
+        Intervencija i5 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,27,13,22),"Testiranje naplate na račun gosta. Veza s recepcijskim poslovanjem je ispravna", p3,iivanovicPos,15));
 
-        Intervencija i6 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,7,22,14,2),"Optimizarana procedura REZ. Izmjena aplicirana na korisnikovoj bazi podataka", p4,iivanovicPro));
-        Intervencija i7 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,9,54),"Provjera logova na modulu PRO. Prema logovima vrijeme odziva je optimalno", p4,ppauroPro));
+        Intervencija i6 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,7,22,14,2),"Optimizarana procedura REZ. Izmjena aplicirana na korisnikovoj bazi podataka", p4,iivanovicPro,480));
+        Intervencija i7 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,5,25,9,54),"Provjera logova na modulu PRO. Prema logovima vrijeme odziva je optimalno", p4,ppauroPro,95));
 
-        Intervencija i8 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,3,26,11,15),"Napravljene izmjene prema specifikaciji HNB-a", p5,ppauroMje));
-        Intervencija i9 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,12,22),"Dostava aplikacije na certificiranje", p5,ppauroMje));
+        Intervencija i8 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,3,26,11,15),"Napravljene izmjene prema specifikaciji HNB-a", p5,ppauroMje,900));
+        Intervencija i9 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,12,22),"Dostava aplikacije na certificiranje", p5,ppauroMje,25));
 
-        Intervencija i10 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,13,55),"Sustav naplate usklađen sa novom verzijom T-ComPayWay payment gateway-a", p6,ppauroIrs));
-        Intervencija i11 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,16,12,5),"Omogućeno parametarsko korištenje vlastite forme za naplatu (SOAP klijent)", p6,ppauroIrs));
-        Intervencija i12 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,14,10),"Implementacija SSL certifikata (Thawte) na korisnikovom Tomcat poslužitelju - preduvjet za korištenje SOAP servisa za naplatu", p6,ppauroIrs));
-        Intervencija i13 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,17,35),"Ažuriranje uputa za parametrizaciju i korištenje novih mogućnosti sustava naplate. Upute dostavljene korisniku.", p6,ppauroIrs));
+        Intervencija i10 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,15,13,55),"Sustav naplate usklađen sa novom verzijom T-ComPayWay payment gateway-a", p6,ppauroIrs,750));
+        Intervencija i11 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,16,12,5),"Omogućeno parametarsko korištenje vlastite forme za naplatu (SOAP klijent)", p6,ppauroIrs,600));
+        Intervencija i12 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,14,10),"Implementacija SSL certifikata (Thawte) na korisnikovom Tomcat poslužitelju - preduvjet za korištenje SOAP servisa za naplatu", p6,ppauroIrs,120));
+        Intervencija i13 = intervencijeDao.save(new Intervencija(UtilitiesDate.getDate(2011,4,18,17,35),"Ažuriranje uputa za parametrizaciju i korištenje novih mogućnosti sustava naplate. Upute dostavljene korisniku.", p6,ppauroIrs,240));
 
     }
 
