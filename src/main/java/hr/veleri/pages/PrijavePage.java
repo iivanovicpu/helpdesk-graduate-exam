@@ -29,6 +29,10 @@ public class PrijavePage extends AuthenticatedPage {
     @SpringBean
     private PrijaveDao prijaveDao;
 
+    public PrijavePage() {
+        this(null);
+    }
+
     public PrijavePage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listPrijavaContainer");
         IColumn[] columns = {
