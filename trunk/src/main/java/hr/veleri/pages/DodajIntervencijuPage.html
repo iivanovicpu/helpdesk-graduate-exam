@@ -24,6 +24,8 @@
 
 <wicket:fragment wicket:id="content">
     <div wicket:id="intervencijaContainer">
+        <span wicket:id="errorMsg"/>
+
         <form wicket:id="intervencijaForm">
             <table class="form">
                 <tr>
@@ -44,25 +46,25 @@
                     </td>
                     <td><input type="text" wicket:id="zaposlenik"/></td>
                 </tr>
-                <!--<tr>-->
-                    <!--<td>-->
-                        <!--<wicket:message key="intervencijaEditPage.opis">opis</wicket:message>-->
-                    <!--</td>-->
-                    <!--<td><textarea wicket:id="opis">opis</textarea></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td>-->
-                        <!--<wicket:message key="intervencijaEditPage.trajanje">trajanje</wicket:message>-->
-                    <!--</td>-->
-                    <!--<td><input wicket:id="trajanje"/></td>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td colspan="2">-->
-                        <!--<input type="submit" wicket:message="value:save"/>-->
-                        <!--&nbsp;&nbsp;&nbsp;-->
-                        <!--<input wicket:id="odustani" type="submit" wicket:message="value:cancel" />-->
-                    <!--</td>-->
-                <!--</tr>-->
+                <tr>
+                    <td>
+                        <wicket:message key="intervencijaEditPage.opis">opis</wicket:message>
+                    </td>
+                    <td><textarea wicket:id="opis">opis</textarea></td>
+                </tr>
+                <tr>
+                    <td>
+                        <wicket:message key="intervencijaEditPage.trajanje">trajanje</wicket:message>
+                    </td>
+                    <td><input wicket:id="trajanje"/></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" wicket:message="value:save"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input wicket:id="odustani" type="submit" wicket:message="value:cancel" />
+                    </td>
+                </tr>
             </table>
         </form>
     </div>
