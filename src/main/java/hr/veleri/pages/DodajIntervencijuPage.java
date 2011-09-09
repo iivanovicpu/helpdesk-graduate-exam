@@ -9,18 +9,18 @@ import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.Prijava;
 import org.apache.wicket.datetime.StyleDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
-import org.apache.wicket.extensions.yui.calendar.DateField;
-import org.apache.wicket.extensions.yui.calendar.DatePicker;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.form.Button;
-import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.TextArea;
-import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.*;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.validation.IValidatable;
+import org.apache.wicket.validation.IValidator;
+import org.apache.wicket.validation.validator.StringValidator;
 
+import javax.xml.validation.Validator;
 import java.util.Date;
 import java.util.Locale;
 
@@ -48,12 +48,6 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
 
         intervencija.setZaposlenik(korisnikZaposlenikDao.findByKorisnikAndAplikacija(korisnik, aplikacija));
         Model<Intervencija> model = new Model<Intervencija>(intervencija);
-        Form form = new Form<Intervencija>("intervencijaForm", model) {
-            protected void onSubmit() {
-                intervencijeDao.save(this.getModel().getObject());
-                setResponsePage(new PrijavaEditPage(intervencija.getPrijava().getPriid()));
-            }
-        };
 
         Button odustaniBtn = new Button("odustani") {
             public void onSubmit() {
@@ -63,7 +57,7 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
         odustaniBtn.setDefaultFormProcessing(false);
 
         Label prirbr = new Label("prirbr", new PropertyModel<Prijava>(intervencija.getPrijava(), "prirbr"));
-        DateTextField datum = new DateTextField("datum", new Model<Date>(new Date()),new StyleDateConverter("M-", false)){
+        final DateTextField datum = new DateTextField("datum", new Model<Date>(new Date()), new StyleDateConverter("M-", false)) {
             @Override
             public Locale getLocale() {
                 return getSession().getLocale();
@@ -73,12 +67,27 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
 
         TextField<Intervencija> zaposlenik = new TextField<Intervencija>("zaposlenik", new PropertyModel<Intervencija>(intervencija, "zaposlenik"));
         zaposlenik.setEnabled(false);
-//        TextArea<Intervencija> opis = new TextArea<Intervencija>("opis", new PropertyModel<Intervencija>(intervencija, "opis"));
-//        TextField<Intervencija> trajanje = new TextField<Intervencija>("trajanje", new PropertyModel<Intervencija>(intervencija, "minutaTrajanja"));
+        TextArea<Intervencija> opis = new TextArea<Intervencija>("opis", new PropertyModel<Intervencija>(intervencija, "opis"));
+        IValidator opisValidator = new StringValidator.LengthBetweenValidator(7,4000);
+        opis.setRequired(true);
+        opis.add(opisValidator);
+        final TextField<Intervencija> trajanje = new TextField<Intervencija>("trajanje", new PropertyModel<Intervencija>(intervencija, "minutaTrajanja"));
+        trajanje.setRequired(true);
 
-//        form.add(prirbr, datum, zaposlenik, opis, odustaniBtn, trajanje);
-                     form.add(prirbr,datum,zaposlenik);
-//        form.add(datePicker);
+        Form form = new Form<Intervencija>("intervencijaForm", model) {
+            protected void onSubmit() {
+                intervencija.setDatum(datum.getModel().getObject());
+                intervencijeDao.save(this.getModel().getObject());
+                info("helll");
+                error("hell error");
+                setResponsePage(new PrijavaEditPage(intervencija.getPrijava().getPriid()));
+            }
+        };
+
+        FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
+        wmc.add(errorMsg);
+
+        form.add(prirbr, datum, zaposlenik, opis, trajanje, odustaniBtn);
 
         wmc.add(form);
         init(DodajIntervencijuPage.this);

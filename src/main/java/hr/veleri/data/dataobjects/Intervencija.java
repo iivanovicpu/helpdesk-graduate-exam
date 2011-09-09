@@ -83,4 +83,8 @@ public class Intervencija  extends DomainObject{
     public void setZaposlenik(KorisnikZaposlenik korisnikZaposlenik) {
         this.zaposlenik = korisnikZaposlenik;
     }
+
+    public void setDatum(Date datum) {
+        this.datum = datum;
+    }
 }
