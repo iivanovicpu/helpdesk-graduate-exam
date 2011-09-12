@@ -20,6 +20,8 @@ public class PrijavaValidator extends HelpdeskDataObjectValidator<Prijava> {
         getProperties().clear();
         if (null == prijava.getOpis() || prijava.getOpis().equals(""))
             getProperties().put("opis", new ResourceModel("prijavaEditPage.opis.fail").getObject());
+        if(null == prijava.getAplikacija())
+            getProperties().put("aplikacija",new ResourceModel("prijavaEditPage.aplikacija.fail").getObject());
         return isAllValid();
     }
 }
