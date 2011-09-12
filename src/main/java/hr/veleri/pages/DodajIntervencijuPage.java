@@ -7,6 +7,7 @@ import hr.veleri.data.dataobjects.Aplikacija;
 import hr.veleri.data.dataobjects.Intervencija;
 import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.Prijava;
+import hr.veleri.datavalidation.IntervencijaValidator;
 import org.apache.wicket.datetime.StyleDateConverter;
 import org.apache.wicket.datetime.markup.html.form.DateTextField;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -43,6 +44,9 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
     public DodajIntervencijuPage(Prijava prijava) {
 
         wmc = new WebMarkupContainer("intervencijaContainer");
+        FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
+        wmc.add(errorMsg);
+
 
         final Intervencija intervencija = new Intervencija();
         intervencija.setPrijava(prijava);
@@ -50,7 +54,9 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
         Aplikacija aplikacija = prijava.getAplikacija();
 
         intervencija.setZaposlenik(korisnikZaposlenikDao.findByKorisnikAndAplikacija(korisnik, aplikacija));
-        Model<Intervencija> model = new Model<Intervencija>(intervencija);
+        final Model<Intervencija> model = new Model<Intervencija>(intervencija);
+
+        final IntervencijaValidator intervencijaValidator = new IntervencijaValidator(intervencija, errorMsg);
 
         Button odustaniBtn = new Button("odustani") {
             public void onSubmit() {
@@ -71,25 +77,17 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
         TextField<Intervencija> zaposlenik = new TextField<Intervencija>("zaposlenik", new PropertyModel<Intervencija>(intervencija, "zaposlenik"));
         zaposlenik.setEnabled(false);
         final TextArea<Intervencija> opis = new TextArea<Intervencija>("opis", new PropertyModel<Intervencija>(intervencija, "opis"));
-        IValidator opisValidator = new StringValidator.LengthBetweenValidator(7,4000);
-        opis.setRequired(true);
-        opis.add(opisValidator);
         final TextField<Intervencija> trajanje = new TextField<Intervencija>("trajanje", new PropertyModel<Intervencija>(intervencija, "minutaTrajanja"));
-        MinimumValidator minimumValidator = new MinimumValidator(1);
-        trajanje.add(minimumValidator);
-        trajanje.error(new ValidationError().addMessageKey("intervencija.trajanje.required"));
-//        trajanje.setRequired(true);
 
         Form form = new Form<Intervencija>("intervencijaForm", model) {
             protected void onSubmit() {
+                if(!intervencijaValidator.isValid(model.getObject()))
+                    return;
                 intervencija.setDatum(datum.getModel().getObject());
                 intervencijeDao.save(this.getModel().getObject());
                 setResponsePage(new PrijavaEditPage(intervencija.getPrijava().getPriid()));
             }
         };
-
-        FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
-        wmc.add(errorMsg);
 
         form.add(prirbr, datum, zaposlenik, opis, trajanje, odustaniBtn);
 
