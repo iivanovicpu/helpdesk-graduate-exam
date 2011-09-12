@@ -2,9 +2,11 @@ package hr.veleri.pages;
 
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.datavalidation.KorisnikValidator;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
@@ -23,29 +25,35 @@ public class KorisnikEditPage extends AuthenticatedPage {
     KorisnikDao korisnikDao;
 
     public KorisnikEditPage(long entryId) {
+
+        final Korisnik korisnik = korisnikDao.findById(entryId);
+        final Model<Korisnik> model = new Model<Korisnik>(korisnik);
+
         wmc = new WebMarkupContainer("korisnikContainer");
 
         FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
         wmc.add(errorMsg);
 
+        final KorisnikValidator korisnikValidator = new KorisnikValidator(korisnik,errorMsg);
 
-        Korisnik korisnik = korisnikDao.findById(entryId);
-        final Model<Korisnik> model = new Model<Korisnik>(korisnik);
+
         System.out.println(korisnik);
 
         Form<Korisnik> form = new Form<Korisnik>("korisnikForm", model) {
             @Override
             protected void onSubmit() {
+                if(!korisnikValidator.isValid(korisnik))
+                    return;
                 korisnikDao.save(model.getObject());
                 setResponsePage(KorisniciPage.class);
             }
         };
 
-        RequiredTextField<Korisnik> prezime = new RequiredTextField<Korisnik>("prezime", new PropertyModel<Korisnik>(korisnik, "prezime"));
-        RequiredTextField<Korisnik> ime = new RequiredTextField<Korisnik>("ime", new PropertyModel<Korisnik>(korisnik, "ime"));
-        RequiredTextField<Korisnik> email = new RequiredTextField<Korisnik>("email", new PropertyModel<Korisnik>(korisnik, "email"));
-        IValidator emailRequiredValidator = EmailAddressValidator.getInstance();
-        email.add(emailRequiredValidator);
+        TextField<Korisnik> prezime = new TextField<Korisnik>("prezime", new PropertyModel<Korisnik>(korisnik, "prezime"));
+        TextField<Korisnik> ime = new TextField<Korisnik>("ime", new PropertyModel<Korisnik>(korisnik, "ime"));
+        TextField<Korisnik> email = new TextField<Korisnik>("email", new PropertyModel<Korisnik>(korisnik, "email"));
+//        IValidator emailRequiredValidator = EmailAddressValidator.getInstance();
+//        email.add(emailRequiredValidator);
 
         form.add(prezime, ime, email);
         wmc.add(form);

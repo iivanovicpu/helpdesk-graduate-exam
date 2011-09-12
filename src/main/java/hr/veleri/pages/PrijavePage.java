@@ -31,10 +31,6 @@ public class PrijavePage extends AuthenticatedPage {
     private PrijaveDao prijaveDao;
 
     public PrijavePage() {
-        this(null);
-    }
-
-    public PrijavePage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listPrijavaContainer");
 
         Form<Prijava> form = new Form<Prijava>("addForm",new Model<Prijava>(new Prijava())){
@@ -60,7 +56,7 @@ public class PrijavePage extends AuthenticatedPage {
                 new AbstractColumn(new Model("")) {
                     public void populateItem(Item cellItem, String componentId, IModel rowModel) {
                         long entryId = ((Prijava) rowModel.getObject()).getPriid();
-                        cellItem.add(new EditPrijavaPanel(componentId, entryId));
+                        cellItem.add(new EditRowPanel(componentId, entryId, new PrijavaEditPage(entryId)));
                     }
                 }
         };
