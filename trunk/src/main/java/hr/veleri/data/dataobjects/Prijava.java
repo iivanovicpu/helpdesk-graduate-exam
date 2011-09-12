@@ -151,4 +151,8 @@ public class Prijava extends DomainObject {
     public void setPrijavio(Korisnik prijavio) {
         this.prijavio = prijavio;
     }
+
+    public void setDatumZap(Date datumZap) {
+        this.pridatumzap = datumZap;
+    }
 }

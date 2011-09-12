@@ -120,11 +120,11 @@ public class PrijaveImp extends AbstractDaoJPAImpl<Prijava> implements PrijaveDa
     }
 
 
-    @Override
-    public Prijava save(Prijava prijava) {
-        if(prijava.getPrirbr() == 0)  {
-            prijava.setPrirbr(findNextRbr());
-        }
-        return super.save(prijava);
-    }
+//    @Override
+//    public Prijava save(Prijava prijava) {
+//        if(prijava.getPrirbr() == 0)  {
+//            prijava.setPrirbr(findNextRbr());
+//        }
+//        return super.save(prijava);
+//    }
 }
