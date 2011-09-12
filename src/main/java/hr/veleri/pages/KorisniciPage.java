@@ -2,16 +2,25 @@ package hr.veleri.pages;
 
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
+import hr.veleri.data.dataobjects.Klijent;
 import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
+import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
+import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.markup.repeater.OddEvenItem;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -32,19 +41,42 @@ public class KorisniciPage extends AuthenticatedPage {
         if(!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
             setResponsePage(UnouthorisedContentPage.class);
 
-        wmc = new WebMarkupContainer("listRadContainer");
+        wmc = new WebMarkupContainer("korisniciContainer");
 
-        wmc.add(new ListView<Korisnik>("listrad", new PropertyModel<List<Korisnik>>(this, "korisnikDao.findAll")) {
 
-            private static final long serialVersionUID = 1L;
-
-            @Override
-            protected void populateItem(ListItem<Korisnik> item) {
-                Korisnik korisnik = item.getModelObject();
-                item.add(new Label("radnikId", String.valueOf(korisnik.getId())));
-                item.add(new Label("radnikIme", korisnik.getIme()));
+            IColumn[] columns = {
+                new PropertyColumn(new Model("Prezime"), "prezime", "prezime"),
+                new PropertyColumn(new Model("Ime"), "ime", "ime"),
+                new PropertyColumn(new Model("E-mail"), "email", "email"),
+                new PropertyColumn(new Model("Tip"), "tip", "tipKorisnika"),
+        };
+        SortableDataProvider provider = new SortableDataProvider() {
+            public int size() {
+                return korisnikDao.countAll();
             }
+
+            public IModel model(Object object) {
+                Korisnik entry = (Korisnik) object;
+                return new Model<Korisnik>(entry);
+            }
+
+            public Iterator iterator(int first, int count) {
+                SortParam sortParam = getSort();
+                return korisnikDao.selectEntries(first, count, sortParam).iterator();
+            }
+        };
+        DataTable dataTable = new DataTable("entries", columns, provider, 5) {
+            protected Item newRowItem(String id, int index, IModel model) {
+                return new OddEvenItem(id, index, model);
+            }
+        };
+
+        dataTable.addTopToolbar(new HeadersToolbar(dataTable, provider));
+        dataTable.addBottomToolbar(new NavigationToolbar(dataTable) {
         });
+
+        wmc.add(dataTable);
+
         contentFragment.add(wmc);
     }
 

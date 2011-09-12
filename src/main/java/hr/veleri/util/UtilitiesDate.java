@@ -7,9 +7,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 /**
- * @author mstipanov
+ * @author iivanovic
  * @version 1.1
- * @since 2006.05.29 12:57:10
+ * @since 2008.05.29 12:57:10
  */
 public final class UtilitiesDate {
     public static final DateFormat DEFAULT_DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");

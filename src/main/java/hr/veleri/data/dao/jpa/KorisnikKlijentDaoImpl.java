@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -25,6 +24,17 @@ public class KorisnikKlijentDaoImpl extends AbstractDaoJPAImpl<KorisnikKlijent> 
 
     public Korisnik getKorisnik(String username, String password) {
         return null;  //todo: implementirati
+    }
+
+    public KorisnikKlijent findByKorisnik(final Korisnik korisnik) {
+        return getJpaTemplate().execute(new JpaCallback<KorisnikKlijent>() {
+            public KorisnikKlijent doInJpa(EntityManager em) throws PersistenceException {
+                TypedQuery<KorisnikKlijent> query = em.createQuery("select k from KorisnikKlijent k where k.korisnik = ?1", KorisnikKlijent.class);
+                query.setParameter(1, korisnik);
+                return query.getSingleResult();
+            }
+        });
+
     }
 
     @Transactional

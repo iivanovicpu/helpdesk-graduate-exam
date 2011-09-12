@@ -17,7 +17,10 @@ import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
+import org.apache.wicket.validation.IValidationError;
 import org.apache.wicket.validation.IValidator;
+import org.apache.wicket.validation.ValidationError;
+import org.apache.wicket.validation.validator.MinimumValidator;
 import org.apache.wicket.validation.validator.StringValidator;
 
 import javax.xml.validation.Validator;
@@ -67,19 +70,20 @@ public class DodajIntervencijuPage extends AuthenticatedPage {
 
         TextField<Intervencija> zaposlenik = new TextField<Intervencija>("zaposlenik", new PropertyModel<Intervencija>(intervencija, "zaposlenik"));
         zaposlenik.setEnabled(false);
-        TextArea<Intervencija> opis = new TextArea<Intervencija>("opis", new PropertyModel<Intervencija>(intervencija, "opis"));
+        final TextArea<Intervencija> opis = new TextArea<Intervencija>("opis", new PropertyModel<Intervencija>(intervencija, "opis"));
         IValidator opisValidator = new StringValidator.LengthBetweenValidator(7,4000);
         opis.setRequired(true);
         opis.add(opisValidator);
         final TextField<Intervencija> trajanje = new TextField<Intervencija>("trajanje", new PropertyModel<Intervencija>(intervencija, "minutaTrajanja"));
-        trajanje.setRequired(true);
+        MinimumValidator minimumValidator = new MinimumValidator(1);
+        trajanje.add(minimumValidator);
+        trajanje.error(new ValidationError().addMessageKey("intervencija.trajanje.required"));
+//        trajanje.setRequired(true);
 
         Form form = new Form<Intervencija>("intervencijaForm", model) {
             protected void onSubmit() {
                 intervencija.setDatum(datum.getModel().getObject());
                 intervencijeDao.save(this.getModel().getObject());
-                info("helll");
-                error("hell error");
                 setResponsePage(new PrijavaEditPage(intervencija.getPrijava().getPriid()));
             }
         };

@@ -8,9 +8,6 @@ import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author Richard Wilkinson - richard.wilkinson@jweekend.com
- */
 public class TestWicketPages {
 
     protected WicketTester tester;

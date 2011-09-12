@@ -10,6 +10,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
@@ -35,6 +36,13 @@ public class PrijavePage extends AuthenticatedPage {
 
     public PrijavePage(final PageParameters pp) {
         wmc = new WebMarkupContainer("listPrijavaContainer");
+
+        Form<Prijava> form = new Form<Prijava>("addForm",new Model<Prijava>(new Prijava())){
+            @Override
+            protected void onSubmit() {
+                setResponsePage(new DodajPrijavuPage());
+            }
+        };
         IColumn[] columns = {
 //                new PropertyColumn(new Model("ID"), "priid"),
 //                new AbstractColumn(new Model("First name")) {
@@ -49,7 +57,7 @@ public class PrijavePage extends AuthenticatedPage {
                 new PropertyColumn(new Model("Aplikacija"), "aplikacija", "aplikacija"),
                 new PropertyColumn(new Model("Opis"), "opis", "opis"),
                 new PropertyColumn(new Model("Napomena"), "napomena", "napomena"),
-                new AbstractColumn(new Model("edit")) {
+                new AbstractColumn(new Model("")) {
                     public void populateItem(Item cellItem, String componentId, IModel rowModel) {
                         long entryId = ((Prijava) rowModel.getObject()).getPriid();
                         cellItem.add(new EditPrijavaPanel(componentId, entryId));
@@ -81,6 +89,7 @@ public class PrijavePage extends AuthenticatedPage {
         });
 
         wmc.add(dataTable);
+        wmc.add(form);
         init(PrijavePage.this);
         contentFragment.add(wmc);
 

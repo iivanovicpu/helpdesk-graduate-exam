@@ -22,7 +22,13 @@
 <span wicket:id="navigation"/>
 
 <wicket:fragment wicket:id="content">
+
     <div wicket:id="listPrijavaContainer">
+        <form wicket:id="addForm">
+            <input type="submit" wicket:message="value:add"/>
+            <br>
+        </form>
+
         <table border="1" wicket:id="entries"></table>
     </div>
 </wicket:fragment>

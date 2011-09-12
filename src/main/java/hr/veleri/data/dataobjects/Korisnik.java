@@ -43,6 +43,14 @@ public class Korisnik  extends DomainObject{
         this.email = email;
     }
 
+    public Korisnik(String ime, String prezime, String email, String lozinka, TipKorisnika tipKorisnika) {
+        this.ime = ime;
+        this.lozinka = lozinka;
+        this.prezime = prezime;
+        this.email = email;
+        this.tipKorisnika = tipKorisnika;
+    }
+
     public long getId() {
         return id;
     }
@@ -115,5 +123,9 @@ public class Korisnik  extends DomainObject{
 
     public void setTipKorisnika(TipKorisnika tipKorisnika) {
         this.tipKorisnika = tipKorisnika;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

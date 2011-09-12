@@ -8,4 +8,7 @@ public interface KorisnikKlijentDao extends Dao<KorisnikKlijent> {
 
     @Transactional
     Korisnik getKorisnik(String username, String password);
+
+    @Transactional
+    KorisnikKlijent findByKorisnik(Korisnik loggedInUser);
 }
