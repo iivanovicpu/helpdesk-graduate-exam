@@ -5,7 +5,6 @@
 
 	<display-name>Wicket Spring</display-name>
 
-	<!-- Open session in view -->
 	<filter>
 		<filter-name>osiv</filter-name>
 		<filter-class>org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter</filter-class>

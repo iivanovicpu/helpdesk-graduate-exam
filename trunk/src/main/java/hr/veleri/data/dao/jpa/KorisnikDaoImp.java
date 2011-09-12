@@ -4,9 +4,8 @@ import hr.veleri.AuthenticationException;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dao.interfaces.KorisnikKlijentDao;
 import hr.veleri.data.dao.interfaces.KorisnikZaposlenikDao;
-import hr.veleri.data.dataobjects.Korisnik;
-import hr.veleri.data.dataobjects.KorisnikKlijent;
-import hr.veleri.data.dataobjects.KorisnikZaposlenik;
+import hr.veleri.data.dataobjects.*;
+import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.orm.jpa.JpaCallback;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class KorisnikDaoImp extends AbstractDaoJPAImpl<Korisnik> implements KorisnikDao {
@@ -68,10 +69,58 @@ public class KorisnikDaoImp extends AbstractDaoJPAImpl<Korisnik> implements Kori
         return false;
     }
 
+    public List selectEntries(int first, int count, final SortParam sortParam) {
+        List sortedEntries = findAll();
+        if (sortParam != null) {
+            if (sortParam.getProperty().equals("prezime")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Korisnik korisnik = (Korisnik) arg0;
+                        Korisnik korisnik1 = (Korisnik) arg1;
+                        int result = String.valueOf(korisnik.getPrezime()).compareTo(String.valueOf(korisnik1.getPrezime()));
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("ime")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Korisnik korisnik = (Korisnik) arg0;
+                        Korisnik korisnik2 = (Korisnik) arg1;
+                        int result = korisnik.getIme().compareTo(korisnik2.getIme());
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("email")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Korisnik korisnik = (Korisnik) arg0;
+                        Korisnik korisnik2 = (Korisnik) arg1;
+                        int result = korisnik.getEmail().compareTo(korisnik2.getEmail());
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+            if (sortParam.getProperty().equals("tip")) {
+                Collections.sort(sortedEntries, new Comparator() {
+                    public int compare(Object arg0, Object arg1) {
+                        Korisnik korisnik = (Korisnik) arg0;
+                        Korisnik korisnik2 = (Korisnik) arg1;
+                        int result = korisnik.getTipKorisnika().compareTo(korisnik2.getTipKorisnika());
+                        return sortParam.isAscending() ? result : -result;
+                    }
+                });
+            }
+        }
+        return sortedEntries.subList(first, first + count);
+
+    }
+
     public Korisnik getKorisnik(final String username, final String password) {
         List<Korisnik> list = findAll();
         // administracija: admin - the MD5 encoder
-        list.add(new Korisnik("Administrator", "sustava", "admin", "9031d52735e2a26a00a7d0d1c94d4743"));
+        list.add(new Korisnik("Administrator", "sustava", "admin", "9031d52735e2a26a00a7d0d1c94d4743",TipKorisnika.ADMINISTRATOR));
         for (Korisnik korisnik : list) {
             if (korisnik.authenticate(username, password))
                 return korisnik;

@@ -15,9 +15,6 @@ import java.util.Date;
 @Table(name = "PRIJAVA")
 public class Prijava extends DomainObject {
 
-//    private static final long serialVersionUID = 1259377496669050427L;
-
-
     @Id
     @GeneratedValue
     private long priid;
@@ -28,9 +25,9 @@ public class Prijava extends DomainObject {
 
     private Date pridatumzap;
 
-    @ManyToOne(targetEntity = KorisnikKlijent.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Korisnik.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "KORISNIK_ID")
-    private KorisnikKlijent prijavio;
+    private Korisnik prijavio;
 
     @ManyToOne(targetEntity = Aplikacija.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "APLIKACIJA_ID")
@@ -47,7 +44,7 @@ public class Prijava extends DomainObject {
     public Prijava() {
     }
 
-    public Prijava(long prirbr, Aplikacija aplikacija, String napomena, String opis, Date pridatum, Date pridatumzap, KorisnikKlijent prijavio) {
+    public Prijava(long prirbr, Aplikacija aplikacija, String napomena, String opis, Date pridatum, Date pridatumzap, Korisnik prijavio) {
         this.prirbr = prirbr;
         this.aplikacija = aplikacija;
         this.napomena = napomena;
@@ -143,11 +140,15 @@ public class Prijava extends DomainObject {
                 '}';
     }
 
-    public KorisnikKlijent getPrijavio() {
+    public Korisnik getPrijavio() {
         return prijavio;
     }
 
     public Aplikacija getAplikacija() {
         return aplikacija;
+    }
+
+    public void setPrijavio(Korisnik prijavio) {
+        this.prijavio = prijavio;
     }
 }

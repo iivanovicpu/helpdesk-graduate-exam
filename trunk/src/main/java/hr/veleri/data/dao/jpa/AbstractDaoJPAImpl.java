@@ -7,10 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import hr.veleri.data.dao.interfaces.Dao;
 import hr.veleri.data.dataobjects.DomainObject;
-/**
- * @author Richard Wilkinson - richard.wilkinson@jweekend.com
- *
- */
+
 public abstract class AbstractDaoJPAImpl<T extends DomainObject> extends JpaDaoSupport implements Dao<T> {
 	
 	private Class<T> domainClass;

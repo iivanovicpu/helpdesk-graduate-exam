@@ -52,10 +52,7 @@
             <version>${slf4j.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <!--
-              since we want the jcl over slf4j, we need to bump up the version of
-              slf4j-api that wicket brings in
-          -->
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>jcl-over-slf4j</artifactId>
@@ -235,26 +232,26 @@
                 </excludes>
             </resource>
         </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/java</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
+        <!--<testResources>-->
+            <!--<testResource>-->
+                <!--<directory>src/test/java</directory>-->
+                <!--<includes>-->
+                    <!--<include>**</include>-->
+                <!--</includes>-->
+                <!--<excludes>-->
+                    <!--<exclude>**/*.java</exclude>-->
+                <!--</excludes>-->
+            <!--</testResource>-->
+            <!--<testResource>-->
+                <!--<directory>src/test/resources</directory>-->
+                <!--<includes>-->
+                    <!--<include>**</include>-->
+                <!--</includes>-->
+                <!--<excludes>-->
+                    <!--<exclude>**/*.java</exclude>-->
+                <!--</excludes>-->
+            <!--</testResource>-->
+        <!--</testResources>-->
         <plugins>
             <plugin>
                 <inherited>true</inherited>

@@ -69,7 +69,7 @@ public class PrijaveImp extends AbstractDaoJPAImpl<Prijava> implements PrijaveDa
                     public int compare(Object arg0, Object arg1) {
                         Prijava entry1 = (Prijava) arg0;
                         Prijava entry2 = (Prijava) arg1;
-                        int result = String.valueOf(entry1.getPrijavio().getKorisnik()).compareTo(String.valueOf(entry2.getPrijavio().getKorisnik()));
+                        int result = String.valueOf(entry1.getPrijavio()).compareTo(String.valueOf(entry2.getPrijavio()));
                         return sortParam.isAscending() ? result : -result;
                     }
                 });
@@ -109,4 +109,22 @@ public class PrijaveImp extends AbstractDaoJPAImpl<Prijava> implements PrijaveDa
         });
     }
 
+    @Transactional
+    public long findNextRbr() {
+        return getJpaTemplate().execute(new JpaCallback<Long>() {
+            public Long doInJpa(EntityManager em) throws PersistenceException {
+                TypedQuery<Long> query = em.createQuery("select max(p.prirbr) from Prijava p", Long.class);
+                return query.getSingleResult() + 1;
+            }
+        });
+    }
+
+
+    @Override
+    public Prijava save(Prijava prijava) {
+        if(prijava.getPrirbr() == 0)  {
+            prijava.setPrirbr(findNextRbr());
+        }
+        return super.save(prijava);
+    }
 }

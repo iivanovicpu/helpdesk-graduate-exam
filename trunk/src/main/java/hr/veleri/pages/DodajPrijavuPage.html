@@ -15,68 +15,61 @@
     <link rel="stylesheet" href="/css/main.css" type="text/css">
 </head>
 <body>
+
+
 <wicket:fragment wicket:id="header">HelpDesk v1.0
-    <wicket:message key="prijavaEditPage.title">Prijava</wicket:message>
+    <wicket:message key="dodajPrijavuPage.title">Nova prijava</wicket:message>
 </wicket:fragment>
 
 <span wicket:id="navigation"/>
 
 <wicket:fragment wicket:id="content">
     <div wicket:id="prijavaContainer">
+        <span wicket:id="errorMsg"/>
+
         <form wicket:id="prijavaForm">
             <table class="form">
-                <tr>
-                    <td>
-                        <wicket:message key="prijavaEditPage.prirbr">rbr</wicket:message>
-                    </td>
-                    <td><span wicket:id="prirbr"/></td>
-                </tr>
+
                 <tr>
                     <td>
                         <wicket:message key="prijavaEditPage.pridatum">datum</wicket:message>
                     </td>
-                    <td><span wicket:id="pridatum"/></td>
+                    <td><input type="text" wicket:id="datum"/></td>
                 </tr>
+
                 <tr>
                     <td>
                         <wicket:message key="prijavaEditPage.prijavio">prijavio</wicket:message>
                     </td>
-                    <td><span wicket:id="prijavio"/></td>
+                    <td><input type="text" wicket:id="prijavio"></td>
                 </tr>
                 <tr>
                     <td>
                         <wicket:message key="prijavaEditPage.aplikacija">aplikacija</wicket:message>
                     </td>
-                    <td><span wicket:id="aplikacija"/></td>
-                </tr>
-                <tr>
-                    <td>
-                        <wicket:message key="prijavaEditPage.pridatumzap">datumzap</wicket:message>
-                    </td>
-                    <td><span wicket:id="pridatumzap"/></td>
+                    <td><select wicket:id="aplikacije"></select></td>
                 </tr>
                 <tr>
                     <td>
                         <wicket:message key="prijavaEditPage.opis">opis</wicket:message>
                     </td>
-                    <td><span wicket:id="opis"/></td>
+                    <td><textarea wicket:id="opis">opis</textarea></td>
                 </tr>
                 <tr>
                     <td>
                         <wicket:message key="prijavaEditPage.napomena">napomena</wicket:message>
                     </td>
-                    <td><span wicket:id="napomena"/></td>
+                    <td><textarea wicket:id="napomena">napomena</textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" wicket:message="value:save"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input wicket:id="odustani" type="submit" wicket:message="value:cancel"/>
+                    </td>
                 </tr>
             </table>
-            <h3>
-                <wicket:message key="prijavaEditPage.intervencije">intervencije</wicket:message>
-            </h3>
-            <input type="submit" wicket:id="dodajint"  wicket:message="value:add"/>
         </form>
-        <br>
-        <table border="1" wicket:id="entries"></table>
-        <br>
-        <a href="/prijave"><wicket:message key="prijavaEditPage.back">back</wicket:message></a>
     </div>
 </wicket:fragment>
 
@@ -85,6 +78,8 @@
     <wicket:message key="logout">Odjavi se</wicket:message>
 </a>
 </wicket:fragment>
+
+
 
 </body>
 </html>
