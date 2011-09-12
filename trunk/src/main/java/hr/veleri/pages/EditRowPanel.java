@@ -16,9 +16,7 @@ public class EditRowPanel extends Panel {
         super(componentId);
         Form form = new Form("form") {
             protected void onSubmit() {
-//                PrijavaEditPage prijavaEditPage = new PrijavaEditPage(entryId);
                 setResponsePage(authenticatedPage);
-//                System.out.println("Edit: prijava (" + entryId + ")");
             }
         };
         add(form);
