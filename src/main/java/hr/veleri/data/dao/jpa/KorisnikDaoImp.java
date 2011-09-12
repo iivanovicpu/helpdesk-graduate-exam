@@ -4,7 +4,10 @@ import hr.veleri.AuthenticationException;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dao.interfaces.KorisnikKlijentDao;
 import hr.veleri.data.dao.interfaces.KorisnikZaposlenikDao;
-import hr.veleri.data.dataobjects.*;
+import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.data.dataobjects.KorisnikKlijent;
+import hr.veleri.data.dataobjects.KorisnikZaposlenik;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.orm.jpa.JpaCallback;
@@ -117,10 +120,20 @@ public class KorisnikDaoImp extends AbstractDaoJPAImpl<Korisnik> implements Kori
 
     }
 
+    public Korisnik findById(final long entryId) {
+        return getJpaTemplate().execute(new JpaCallback<Korisnik>() {
+            public Korisnik doInJpa(EntityManager em) throws PersistenceException {
+                TypedQuery<Korisnik> query = em.createQuery("select k from Korisnik k where k.id = ?1", Korisnik.class);
+                query.setParameter(1, entryId);
+                return query.getSingleResult();
+            }
+        });
+    }
+
     public Korisnik getKorisnik(final String username, final String password) {
         List<Korisnik> list = findAll();
         // administracija: admin - the MD5 encoder
-        list.add(new Korisnik("Administrator", "sustava", "admin", "9031d52735e2a26a00a7d0d1c94d4743",TipKorisnika.ADMINISTRATOR));
+        list.add(new Korisnik("Administrator", "sustava", "admin", "9031d52735e2a26a00a7d0d1c94d4743", TipKorisnika.ADMINISTRATOR));
         for (Korisnik korisnik : list) {
             if (korisnik.authenticate(username, password))
                 return korisnik;

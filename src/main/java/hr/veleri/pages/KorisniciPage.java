@@ -49,6 +49,13 @@ public class KorisniciPage extends AuthenticatedPage {
                 new PropertyColumn(new Model("Ime"), "ime", "ime"),
                 new PropertyColumn(new Model("E-mail"), "email", "email"),
                 new PropertyColumn(new Model("Tip"), "tip", "tipKorisnika"),
+                new AbstractColumn<Korisnik>(new Model<String>("")) {
+                    public void populateItem(Item cellItem, String componentId, IModel rowModel) {
+                        long entryId = ((Korisnik) rowModel.getObject()).getId();
+                        cellItem.add(new EditRowPanel(componentId, entryId, new KorisnikEditPage(entryId)));
+                    }
+                }
+
         };
         SortableDataProvider provider = new SortableDataProvider() {
             public int size() {
