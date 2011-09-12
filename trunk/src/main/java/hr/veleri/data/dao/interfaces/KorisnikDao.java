@@ -20,4 +20,6 @@ public interface KorisnikDao extends Dao<Korisnik> {
     @Transactional
     List selectEntries(int first, int count, SortParam sortParam);
 
+    @Transactional
+    Korisnik findById(long entryId);
 }
