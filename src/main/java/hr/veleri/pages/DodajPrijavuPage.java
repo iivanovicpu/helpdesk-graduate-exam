@@ -77,7 +77,6 @@ public class DodajPrijavuPage extends AuthenticatedPage {
                 prijavaModel.getObject().setPrirbr(prijaveDao.findNextRbr());
 
                 Prijava p = prijaveDao.save(prijavaModel.getObject());
-//                setResponsePage(PrijavePage.class);
                 setResponsePage(new PrijavaEditPage(p.getPriid()));
             }
         };
