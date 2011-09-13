@@ -4,6 +4,7 @@ import hr.veleri.data.dao.interfaces.IntervencijeDao;
 import hr.veleri.data.dataobjects.Intervencija;
 import hr.veleri.data.dataobjects.Prijava;
 import hr.veleri.datavalidation.IntervencijaValidator;
+import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
@@ -24,6 +25,17 @@ public class IntervencijaEditPage extends AuthenticatedPage {
 
     @SpringBean
     private IntervencijeDao intervencijeDao;
+
+    public IntervencijaEditPage(PageParameters pp) {
+        try {
+            long intid = Long.valueOf((String) pp.get("intid"));
+            setResponsePage(new IntervencijaEditPage(intid));
+        } catch (NumberFormatException e) {
+            setResponsePage(UnouthorisedContentPage.class);
+        } catch (ClassCastException e) {
+            setResponsePage(UnouthorisedContentPage.class);
+        }
+    }
 
     public IntervencijaEditPage(long intid) {
         wmc = new WebMarkupContainer("intervencijaContainer");

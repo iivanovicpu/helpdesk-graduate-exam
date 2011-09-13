@@ -2,7 +2,6 @@ package hr.veleri.pages;
 
 import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
-import hr.veleri.data.dataobjects.Klijent;
 import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.PageParameters;
@@ -10,18 +9,13 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.basic.Label;
-import org.apache.wicket.markup.html.list.ListItem;
-import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * User: iivanovic

@@ -1,18 +1,17 @@
 package hr.veleri.pages;
 
+import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import hr.veleri.datavalidation.KorisnikValidator;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.form.Form;
-import org.apache.wicket.markup.html.form.RequiredTextField;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-import org.apache.wicket.validation.IValidator;
-import org.apache.wicket.validation.validator.EmailAddressValidator;
 
 /**
  * User: iivanovic
@@ -26,6 +25,10 @@ public class KorisnikEditPage extends AuthenticatedPage {
 
     public KorisnikEditPage(long entryId) {
 
+        /* redirekcija ako nije administrator logiran */
+        if(!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
+            setResponsePage(UnouthorisedContentPage.class);
+
         final Korisnik korisnik = korisnikDao.findById(entryId);
         final Model<Korisnik> model = new Model<Korisnik>(korisnik);
 
@@ -34,7 +37,7 @@ public class KorisnikEditPage extends AuthenticatedPage {
         FeedbackPanel errorMsg = new FeedbackPanel("errorMsg");
         wmc.add(errorMsg);
 
-        final KorisnikValidator korisnikValidator = new KorisnikValidator(korisnik,errorMsg);
+        final KorisnikValidator korisnikValidator = new KorisnikValidator(korisnik, errorMsg);
 
 
         System.out.println(korisnik);
@@ -42,7 +45,7 @@ public class KorisnikEditPage extends AuthenticatedPage {
         Form<Korisnik> form = new Form<Korisnik>("korisnikForm", model) {
             @Override
             protected void onSubmit() {
-                if(!korisnikValidator.isValid(korisnik))
+                if (!korisnikValidator.isValid(korisnik))
                     return;
                 korisnikDao.save(model.getObject());
                 setResponsePage(KorisniciPage.class);

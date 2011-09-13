@@ -108,4 +108,11 @@ tr.headers a {
     border-collapse: collapse;
 }
 
+.editLink {
+    color: #708090;
+    font-size: 70%;
+    text-decoration: none;
+    padding: 5px;
+}
+
 

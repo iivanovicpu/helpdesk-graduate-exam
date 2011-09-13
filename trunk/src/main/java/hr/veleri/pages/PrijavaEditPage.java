@@ -1,11 +1,14 @@
 package hr.veleri.pages;
 
+import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.AplikacijaDao;
 import hr.veleri.data.dao.interfaces.IntervencijeDao;
 import hr.veleri.data.dao.interfaces.PrijaveDao;
 import hr.veleri.data.dataobjects.Aplikacija;
 import hr.veleri.data.dataobjects.Intervencija;
 import hr.veleri.data.dataobjects.Prijava;
+import hr.veleri.data.dataobjects.TipKorisnika;
+import org.apache.wicket.PageParameters;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
@@ -40,6 +43,17 @@ public class PrijavaEditPage extends AuthenticatedPage {
     @SpringBean
     private AplikacijaDao aplikacijaDao;
 
+    public PrijavaEditPage(PageParameters pp) {
+        try {
+            long priid = Long.valueOf((String) pp.get("priid"));
+            setResponsePage(new PrijavaEditPage(priid));
+        } catch (NumberFormatException e) {
+            setResponsePage(UnouthorisedContentPage.class);
+        } catch (ClassCastException e){
+            setResponsePage(UnouthorisedContentPage.class);
+        }
+    }
+
     public PrijavaEditPage(long prijavaId) {
         final Prijava prijava = prijaveDao.findById(prijavaId);
         wmc = new WebMarkupContainer("prijavaContainer");
@@ -57,11 +71,6 @@ public class PrijavaEditPage extends AuthenticatedPage {
         Label aplikacija = new Label("aplikacija", new PropertyModel<Prijava>(prijava,"aplikacija"));
         Label opis = new Label("opis", new PropertyModel<Prijava>(prijava,"opis"));
         Label napomena = new Label("napomena", new PropertyModel<Prijava>(prijava,"napomena"));
-
-        /* drop lista se ne ažurira s podatkom iz baze, dropliste ćemo koristiti samo za insert forme */
-//        ChoiceRenderer<Aplikacija> choiceRendererAplikacija = new ChoiceRenderer<Aplikacija>("sifra");
-//        PropertyModel<Aplikacija> aplikacijaPropertyModel = new PropertyModel<Aplikacija>(prijavaModel.getObject(), "aplikacija");
-//        DropDownChoice<Aplikacija> aplikacije = new DropDownChoice<Aplikacija>("aplikacije", aplikacijaPropertyModel, aplikacijaDao.findAll(), choiceRendererAplikacija);
 
         Button dodajIntervenciju = new Button("dodajint") {
             public void onSubmit() {
