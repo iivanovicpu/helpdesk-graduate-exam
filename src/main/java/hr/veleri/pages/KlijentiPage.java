@@ -1,7 +1,9 @@
 package hr.veleri.pages;
 
+import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
+import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
@@ -26,7 +28,13 @@ public class KlijentiPage extends AuthenticatedPage {
     @SpringBean
     private KlijentDao klijentDao;
 
-    public KlijentiPage(final PageParameters pp) {
+    public KlijentiPage() {
+
+        /* redirekcija ako nije administrator logiran */
+//        if(!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
+//            setResponsePage(UnouthorisedContentPage.class);
+
+
         wmc = new WebMarkupContainer("listKlijentContainer");
 
         IColumn[] columns = {

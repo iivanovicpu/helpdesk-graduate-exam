@@ -7,6 +7,7 @@ import org.apache.wicket.Response;
 import org.apache.wicket.Session;
 import org.apache.wicket.authorization.strategies.page.SimplePageAuthorizationStrategy;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.target.coding.MixedParamUrlCodingStrategy;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 public class HelpdeskApplication extends WebApplication {
@@ -34,14 +35,12 @@ public class HelpdeskApplication extends WebApplication {
         mountBookmarkablePage("korisnici", KorisniciPage.class);
         mountBookmarkablePage("login", Login.class);
         mountBookmarkablePage("prijave", PrijavePage.class);
-        mountBookmarkablePage("prijava", PrijavaEditPage.class);
+        mount(new MixedParamUrlCodingStrategy("prijava",PrijavaEditPage.class,new String[]{"priid"}));
+        mount(new MixedParamUrlCodingStrategy("intervencija",IntervencijaEditPage.class,new String[]{"intid"}));
         mountBookmarkablePage("home", HomePage.class);
         getMarkupSettings().setDefaultMarkupEncoding("UTF8");
         addComponentInstantiationListener(getSpringInjector());
         getMarkupSettings().setStripWicketTags(true);
-
-//        initData();
-
 
         getSecuritySettings().setAuthorizationStrategy(
                 /* AuthenticatedPage klase su zaštićene login-om */

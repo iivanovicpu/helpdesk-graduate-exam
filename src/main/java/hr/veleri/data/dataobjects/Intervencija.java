@@ -21,7 +21,7 @@ public class Intervencija  extends DomainObject{
 
     private Date datum;
 
-    @ManyToOne(targetEntity = Prijava.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = Prijava.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "PRIJAVA_ID")
     private Prijava prijava;
 
