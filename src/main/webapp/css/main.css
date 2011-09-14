@@ -115,4 +115,17 @@ tr.headers a {
     padding: 5px;
 }
 
+.upute {
+    color: #666666;
+    font-size: 85%;
+    text-align: justify;
+}
+
+.upute td {
+    color: #666666;
+    font-size: 70%;
+    border: gray, 1px, solid;
+    text-align: justify;
+}
+
 

@@ -2,8 +2,8 @@ package hr.veleri.data;
 
 import hr.veleri.data.dao.interfaces.*;
 import hr.veleri.data.dataobjects.*;
+import hr.veleri.util.Utilities;
 import hr.veleri.util.UtilitiesDate;
-import org.apache.commons.httpclient.util.DateUtil;
 
 /**
  * User: iivanovic
@@ -77,11 +77,14 @@ public class InitData {
         Klijent supetrus = klijentDao.save(new Klijent("007", "Supetrus Hoteli d.d."));
 
         // korisnici
-        Korisnik iivanovic = korisnikDao.save(new Korisnik("Igor", "Ivanović", "igor.ivanovic@veleri.hr", "3b6d69c25e32c90b85c11c03dfde97e6",TipKorisnika.ZAPOSLENIK));    // pass: iivanovic
-        Korisnik ppauro = korisnikDao.save(new Korisnik("Patrik", "Pauro", "patrik.pauro@veleri.hr", "6c722ef06c1db589caef37c1b5fb8850",TipKorisnika.ZAPOSLENIK));      // pass: ppauro
+        Korisnik iivanovic = korisnikDao.save(new Korisnik("Igor", "Ivanović", "igor.ivanovic@veleri.hr", "3b6d69c25e32c90b85c11c03dfde97e6",TipKorisnika.PODRSKA));    // pass: iivanovic
+        Korisnik ppauro = korisnikDao.save(new Korisnik("Patrik", "Pauro", "patrik.pauro@veleri.hr", "6c722ef06c1db589caef37c1b5fb8850",TipKorisnika.PODRSKA));      // pass: ppauro
         Korisnik tcosic = korisnikDao.save(new Korisnik("Tomislav", "Ćosić", "tomislav.cosic@veleri.hr", "cb3918a280403e87479d2ec7141b32dc",TipKorisnika.KLIJENT));  // pass: tcosic
         Korisnik vjuhas = korisnikDao.save(new Korisnik("Vanja", "Juhas", "vanja.juhas@veleri.hr", "9829bcb9e22402246d5f865c74117a16",TipKorisnika.KLIJENT));        // pass: vjuhas
         Korisnik dostojic = korisnikDao.save(new Korisnik("Damir", "Ostojić", "damir.ostojic@veleri.hr", "9bddd73fd4e48c8cc0adcd9c75df88be",TipKorisnika.KLIJENT));    // pass: dostojic
+        Korisnik mentor = korisnikDao.save(new Korisnik("Ivan", "Pogarčić", "mentor", "23cbeacdea458e9ced9807d6cbe2f4d6",TipKorisnika.ADMINISTRATOR));    // pass: mentor
+        Korisnik klijent = korisnikDao.save(new Korisnik("Ivo", "Ivić", "klijent", "bdf4b9e8020eb9e0c2f9f775735548de",TipKorisnika.ADMINISTRATOR));    // pass: klijent
+        Korisnik podrska = korisnikDao.save(new Korisnik("Tomislav", "Novak", "podrska", "6e3ed7150d87149f53b9490a3287cb3d",TipKorisnika.ADMINISTRATOR));    // pass: podrska
 
         // aplikacije
         Aplikacija ptw = aplikacijaDao.save(new Aplikacija("Prijava Turista - Web", "PTW"));
@@ -99,15 +102,25 @@ public class InitData {
         KorisnikZaposlenik iivanovicPos = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pos, iivanovic));
         KorisnikZaposlenik iivanovicPro = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, iivanovic));
         KorisnikZaposlenik ppauroMje =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(mje, ppauro));
+        KorisnikZaposlenik podrskaMje =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(mje, podrska));
+        KorisnikZaposlenik podrskaPos =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(pos, podrska));
+        KorisnikZaposlenik podrskaPtw =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, podrska));
+        KorisnikZaposlenik podrskaRec =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(rec, podrska));
+        KorisnikZaposlenik podrskaPro =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, podrska));
+        KorisnikZaposlenik podrskaGas =  korisnikZaposlenikDao.save(new KorisnikZaposlenik(gas, podrska));
+        KorisnikZaposlenik podrskaPtz2 = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptz2, ppauro));
+        KorisnikZaposlenik podrskaIrs = korisnikZaposlenikDao.save(new KorisnikZaposlenik(irs, ppauro));
         KorisnikZaposlenik ppauroRec = korisnikZaposlenikDao.save(new KorisnikZaposlenik(rec, ppauro));
         KorisnikZaposlenik ppauroGas = korisnikZaposlenikDao.save(new KorisnikZaposlenik(gas, ppauro));
-        KorisnikZaposlenik ppauroPro = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
         KorisnikZaposlenik ppauroIrs = korisnikZaposlenikDao.save(new KorisnikZaposlenik(irs, ppauro));
+        KorisnikZaposlenik ppauroPro = korisnikZaposlenikDao.save(new KorisnikZaposlenik(pro, ppauro));
+        KorisnikZaposlenik ppauroPtw = korisnikZaposlenikDao.save(new KorisnikZaposlenik(ptw, ppauro));
 
         // korisnici klijenti: tcosic, vjuhas - korisnici aplikacija
         KorisnikKlijent korisnikKlijent = korisnikKlijentDao.save(new KorisnikKlijent(pl, tcosic));
         KorisnikKlijent korisnikKlijent1 = korisnikKlijentDao.save(new KorisnikKlijent(ss, vjuhas));
         KorisnikKlijent korisnikKlijent2 = korisnikKlijentDao.save(new KorisnikKlijent(imperial, dostojic));
+        KorisnikKlijent korisnikKlijent3 = korisnikKlijentDao.save(new KorisnikKlijent(imperial, klijent));
 
         // prijave:
         Prijava p1 = prijaveDao.save(new Prijava(1,ptw,"","Kako napraviti aktivaciju korisničkog računa", UtilitiesDate.getDate(2011,5,25,8,0),UtilitiesDate.getDate(2011,5,25,8,5),tcosic));
@@ -144,5 +157,11 @@ public class InitData {
 
     public void setInitialised(boolean initialised) {
         this.initialised = initialised;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("mentor: " + Utilities.getMD5("mentor"));
+        System.out.println("klijent: " + Utilities.getMD5("klijent"));
+        System.out.println("podrska: " + Utilities.getMD5("podrska"));
     }
 }
