@@ -8,17 +8,11 @@ import hr.veleri.data.dao.interfaces.KorisnikDao;
 import hr.veleri.data.dataobjects.Korisnik;
 import hr.veleri.data.dataobjects.TipKorisnika;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.model.CompoundPropertyModel;
 import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
 /**
  * User: iivanovic
@@ -57,7 +51,7 @@ public class Login extends WebPage {
                 try {
                     Korisnik korisnik = korisnikDao.getKorisnik(username, password);
                     if (korisnikDao.isKorisnikZaposlenik(korisnik))
-                        korisnik.setTipKorisnika(TipKorisnika.ZAPOSLENIK);
+                        korisnik.setTipKorisnika(TipKorisnika.PODRSKA);
                     if (korisnikDao.isKorisnikKlijent(korisnik))
                         korisnik.setTipKorisnika(TipKorisnika.KLIJENT);
                     if (korisnik.getTipKorisnika() == null)

@@ -6,5 +6,5 @@ package hr.veleri.data.dataobjects;
  * Time: 13:39
  */
 public enum TipKorisnika {
-    ADMINISTRATOR, KLIJENT, ZAPOSLENIK
+    ADMINISTRATOR, KLIJENT, PODRSKA
 }

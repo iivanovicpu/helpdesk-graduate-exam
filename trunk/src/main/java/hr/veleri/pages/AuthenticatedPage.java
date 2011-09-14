@@ -37,7 +37,7 @@ public class AuthenticatedPage extends WebPage {
 
         if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
             addNavigation();
-        if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ZAPOSLENIK))
+        if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.PODRSKA))
             addZaposlenikNavigation();
         if (((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.KLIJENT))
             addKlijentNavigation();
@@ -80,7 +80,7 @@ public class AuthenticatedPage extends WebPage {
 
     private void initLoginInfo() {
         Korisnik korisnik = ((HelpdeskSession) getSession()).getLoggedInUser();
-        loginInfoFragment.add(new Label("user", korisnik.getIme() + " " + korisnik.getPrezime() + "(" + korisnik.getTipKorisnika() + ")"));
+        loginInfoFragment.add(new Label("user", korisnik.getIme() + " " + korisnik.getPrezime() + " (" + korisnik.getTipKorisnika() + ")"));
         Link logoutLink = new LogoutLink("logout", Login.class);
 
         loginInfoFragment.add(logoutLink);
