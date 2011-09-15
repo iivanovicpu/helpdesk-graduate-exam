@@ -4,13 +4,11 @@ import hr.veleri.HelpdeskSession;
 import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
 import hr.veleri.data.dataobjects.TipKorisnika;
-import org.apache.wicket.PageParameters;
-import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.*;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
-import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.OddEvenItem;
 import org.apache.wicket.model.IModel;
@@ -30,13 +28,18 @@ public class KlijentiPage extends AuthenticatedPage {
 
     public KlijentiPage() {
 
-        /* redirekcija ako nije administrator logiran */
-//        if(!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
-//            setResponsePage(UnouthorisedContentPage.class);
-
-
         wmc = new WebMarkupContainer("listKlijentContainer");
 
+        Form<Klijent> form = new Form<Klijent>("addForm", new Model<Klijent>(new Klijent())) {
+            @Override
+            protected void onSubmit() {
+                if (!((HelpdeskSession) getSession()).getLoggedInUser().getTipKorisnika().equals(TipKorisnika.ADMINISTRATOR))
+                    setResponsePage(UnouthorisedContentPage.class);
+                setResponsePage(new DodajKlijentaPage());
+            }
+        };
+
+        wmc.add(form);
         IColumn[] columns = {
                 new PropertyColumn(new Model("Šifra"), "sifra", "sifra"),
                 new PropertyColumn(new Model("Naziv"), "naziv", "naziv"),

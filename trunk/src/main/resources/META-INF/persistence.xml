@@ -13,6 +13,9 @@
         <class>hr.veleri.data.dataobjects.Klijent</class>
         <class>hr.veleri.data.dataobjects.Korisnik</class>
         <class>hr.veleri.data.dataobjects.KorisnikKlijent</class>
+        <class>hr.veleri.data.dataobjects.KorisnikZaposlenik</class>
+        <class>hr.veleri.data.dataobjects.Prijava</class>
+        <class>hr.veleri.data.dataobjects.Intervencija</class>
 
         <properties>
             <!--jdbc.driver=org.hsqldb.jdbcDriver-->

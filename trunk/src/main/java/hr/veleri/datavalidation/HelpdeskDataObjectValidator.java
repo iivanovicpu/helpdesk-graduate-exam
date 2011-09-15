@@ -18,6 +18,9 @@ public abstract class HelpdeskDataObjectValidator<T extends DomainObject> implem
     private boolean isValid = true;
     private FeedbackPanel feedbackPanel;
 
+    protected HelpdeskDataObjectValidator() {
+    }
+
     public HelpdeskDataObjectValidator(T object, FeedbackPanel feedbackPanel) {
         this.dataObject = object;
         this.feedbackPanel = feedbackPanel;
@@ -50,5 +53,13 @@ public abstract class HelpdeskDataObjectValidator<T extends DomainObject> implem
             getFeedbackPanel().info(properties.get(key));
         }
         return properties.isEmpty();
+    }
+
+    public void setDataObject(DomainObject dataObject) {
+        this.dataObject = dataObject;
+    }
+
+    public void setFeedbackPanel(FeedbackPanel feedbackPanel) {
+        this.feedbackPanel = feedbackPanel;
     }
 }

@@ -30,6 +30,10 @@
      -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <bean id="klijentValidator" class="hr.veleri.datavalidation.KlijentValidator">
+        <property name="klijentDao" ref="klijentDao"/>
+    </bean>
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
