@@ -12,7 +12,7 @@
     <meta name="robots" content="index,follow">
     <meta name="distribution" content="global">
     <meta name="author" content="Igor Ivanović, Veleučilište u Rijeci">
-    <link rel="stylesheet" href="/css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
 <wicket:fragment wicket:id="header">HelpDesk v1.0 -
@@ -21,7 +21,47 @@
 
 <span wicket:id="navigation"/>
 
-<wicket:fragment wicket:id="content">Početna stranica</wicket:fragment>
+<wicket:fragment wicket:id="content">
+    <div id="content">
+        <h4>Opis:</h4>
+
+        <p class="upute"><h5>Baza podataka:</h5>
+        Za komunikaciju s bazom podataka koristi se Hibernate JPA implementacija.
+        Jedan modul aplikacije brine o konekciji i transakcijama na bazi podataka.
+        Entiteti se konvertiraju u objekte (POJO) a isti se nalaze u memoriji za cijelo vrijeme izvršavanja aplikacije
+        (trajno ili persitence).
+        Prilikom kreiranja objekata entiteta koristi se JPQL upitni jezik. Ovo omogućuje veću neovisnost o tipu baze
+        podataka. Aplikacija je testirana s PostreSQL i HyperSQL.
+        Ovo je demo verzija aplikacije koja uključuje testne inicijalne podatke.
+        </p>
+        <p class="upute">
+        <h5>Sigurnost:</h5>
+        Sustavom korisničkkih imena i lozinki omogućena je identifikacija i autorizacija korisnika. Autorizacija se
+        odnosi na tri različita tipa korisnika: KLIJENT, PODRŠKA, ADMINISTRATOR.
+        Ovisno o tome koji je tip korisnika prijavljen u sustav, kreiraju se različiti izbornici.
+        Na svakoj stranici nakon prijave u sustav istaknuto je ime i tip prijavljenog korisnika.
+        Osim "skrivanja" izbornika za zabranjene akcije zaštita je ugrađena i za zahtjeve korisnika mimo izbornika.
+        Lozinke se u bazu spremaju u kriptiranom obliku.
+        Proces prijave u sustav uspoređuje dvije kriptirane vrijednosti (onu iz baze i onu utipkanu u formu za prijavu).
+        Na ovaj način lozinka se u čistom obliku ne prenosi mrežom.
+        Pristup bazi podataka obavlja se iz jednog modula.
+        Ovaj modul za pristup bazi korisnti postavke definirane u određenoj XML datoteci.
+        Kako se radi o čistom tekstu, ugrađena je dodatna zaštita kriptiranjem ključnih postavki u ovoj XML datoteci.
+        Na ovaj način onemogućen je izravan pristup ovim povjerljivim podacima iz datotečnog sustava Web poslužitelja.
+        </p>
+        <p class="upute">
+        <h5>Lokalizacija:</h5>
+        Aplikacija ima podršku za višejezičnost korištenjem Java <code>ResourceBundle</code> klasa.
+        U demo verziji omogućeno je sučelje na hrvatskom i engleskom jeziku.
+        Nažalost tekst koji čitate je samo na hrvatskom budući da bi prijevođenje na engleski izašlo iz okvire zadatka
+        završnog rada.
+        U razvoju sučelja kao konstante se koriste kodovi koji predstavljaju ključ u Java properties datotekama
+        aplikacije.
+        Ove datoteke sadrže tekst u kojem su svakom ključu navedene vrijednosti na zadanom jeziku.
+        Na svakoj stranici postoji mogućnost promjene jezika.
+        </p>
+    </div>
+</wicket:fragment>
 
 <wicket:fragment wicket:id="userinfo">
     <div wicket:id="user">home- userinfo</div>

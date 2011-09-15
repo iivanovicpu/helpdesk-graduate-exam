@@ -55,8 +55,6 @@ public class KorisnikEditPage extends AuthenticatedPage {
         TextField<Korisnik> prezime = new TextField<Korisnik>("prezime", new PropertyModel<Korisnik>(korisnik, "prezime"));
         TextField<Korisnik> ime = new TextField<Korisnik>("ime", new PropertyModel<Korisnik>(korisnik, "ime"));
         TextField<Korisnik> email = new TextField<Korisnik>("email", new PropertyModel<Korisnik>(korisnik, "email"));
-//        IValidator emailRequiredValidator = EmailAddressValidator.getInstance();
-//        email.add(emailRequiredValidator);
 
         form.add(prezime, ime, email);
         wmc.add(form);
