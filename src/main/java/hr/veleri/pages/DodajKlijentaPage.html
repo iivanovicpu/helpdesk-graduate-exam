@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xml:lang="en" lang="en">
+<head>
+    <title>HelpDesk - Veleučilište u Rijeci</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="DC.Subject"
+          content="aplikacija održavanje, aplikacija, servis, Veleučilište u Rijeci, Informatika, Odsjek Pula"/>
+    <meta name="DC.Title" content="HelpDesk"/>
+    <meta name="DC.Subject" content="HelpDesk"/>
+    <meta name="robots" content="index,follow">
+    <meta name="distribution" content="global">
+    <meta name="author" content="Igor Ivanović, Veleučilište u Rijeci">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
+<body>
+
+
+
+<wicket:fragment wicket:id="header">HelpDesk v1.0
+    <wicket:message key="dodajKlijentaPage.title">Novi klijent</wicket:message>
+</wicket:fragment>
+
+<span wicket:id="navigation"/>
+
+<wicket:fragment wicket:id="content">
+    <div wicket:id="klijentContainer">
+        <span wicket:id="errorMsg"/>
+
+        <form wicket:id="klijentForm">
+            <table class="form">
+
+                <tr>
+                    <td>
+                        <wicket:message key="klijentEditPage.sifra">šifra</wicket:message>
+                    </td>
+                    <td><input type="text" wicket:id="sifra"/></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <wicket:message key="klijentEditPage.naziv">naziv</wicket:message>
+                    </td>
+                    <td><input type="text" wicket:id="naziv"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" wicket:message="value:save"/>
+                        &nbsp;&nbsp;&nbsp;
+                        <input wicket:id="odustani" type="submit" wicket:message="value:cancel"/>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</wicket:fragment>
+
+<wicket:fragment wicket:id="userinfo">
+    <span wicket:id="user">prijave- userinfo</span><br><a href=# wicket:id="logout">
+    <wicket:message key="logout">Odjavi se</wicket:message>
+</a>
+</wicket:fragment>
+
+
+
+
+</body>
+</html>

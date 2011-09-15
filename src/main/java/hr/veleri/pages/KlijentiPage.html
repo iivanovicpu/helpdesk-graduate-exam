@@ -22,7 +22,11 @@
 <span wicket:id="navigation"/>
 
 <wicket:fragment wicket:id="content">
+
     <div wicket:id="listKlijentContainer">
+        <form wicket:id="addForm">
+            <input type="submit" wicket:message="value:add"/>
+        </form>
         <table border="1" wicket:id="entries"/>
     </div>
 </wicket:fragment>

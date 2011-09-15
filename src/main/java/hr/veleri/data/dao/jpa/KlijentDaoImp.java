@@ -3,6 +3,7 @@ package hr.veleri.data.dao.jpa;
 import hr.veleri.data.dao.interfaces.KlijentDao;
 import hr.veleri.data.dataobjects.Klijent;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.orm.jpa.JpaCallback;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -66,6 +67,20 @@ public class KlijentDaoImp extends AbstractDaoJPAImpl<Klijent> implements Klijen
             }
         }
         return sortedEntries.subList(first, first + count);
+    }
+
+    public Klijent findBySifra(final String sifra) {
+        try {
+            return getJpaTemplate().execute(new JpaCallback<Klijent>() {
+                public Klijent doInJpa(EntityManager em) throws PersistenceException {
+                    TypedQuery<Klijent> query = em.createQuery("select k from Klijent k where k.sifra = ?1", Klijent.class);
+                    query.setParameter(1, sifra);
+                    return query.getSingleResult();
+                }
+            });
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 
 }
