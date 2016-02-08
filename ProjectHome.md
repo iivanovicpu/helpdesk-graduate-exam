@@ -1,0 +1,1 @@
+HelpDesk application developed for educational purposes. Example using acquired knowledge from college of object oriented technologies in development of enterprise software.
